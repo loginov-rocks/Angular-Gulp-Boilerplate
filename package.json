@@ -32,5 +32,9 @@
     "main-bower-files": "^2.13.1",
     "uglify-save-license": "^0.4.1",
     "wiredep": "^4.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/1oginov/Angular-Gulp-Boilerplate.git"
   }
 }
