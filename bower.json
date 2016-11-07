@@ -1,0 +1,10 @@
+{
+  "name": "angular-gulp-boilerplate",
+  "authors": [
+    "Danila Loginov <loginovdanila@gmail.com> (https://loginov.rocks/)"
+  ],
+  "dependencies": {
+    "angular": "^1.5.8",
+    "angular-ui-router": "^0.3.2"
+  }
+}
