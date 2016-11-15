@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "author": "Danila Loginov <loginovdanila@gmail.com> (https://loginov.rocks/)",
   "devDependencies": {
-    "browser-sync": "^2.17.5",
+    "browser-sync": "^2.17.6",
     "browser-sync-spa": "^1.0.3",
     "del": "^2.2.2",
     "eslint-plugin-angular": "^1.4.1",
@@ -13,7 +13,7 @@
     "gulp-autoprefixer": "^3.1.1",
     "gulp-cssnano": "^2.1.2",
     "gulp-eslint": "^3.0.1",
-    "gulp-filter": "^4.0.0",
+    "gulp-filter": "~3.0.1",
     "gulp-flatten": "^0.3.1",
     "gulp-htmlmin": "^3.0.0",
     "gulp-inject": "^4.1.0",
@@ -27,10 +27,8 @@
     "gulp-uglify": "^2.0.0",
     "gulp-useref": "^3.1.2",
     "gulp-util": "^3.0.7",
-    "http-proxy-middleware": "^0.17.2",
-    "lodash": "^4.16.6",
+    "lodash": "^4.17.0",
     "main-bower-files": "^2.13.1",
-    "uglify-save-license": "^0.4.1",
     "wiredep": "^4.0.0"
   },
   "repository": {
