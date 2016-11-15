@@ -3,7 +3,11 @@
 
     angular
         .module('app')
-        .controller('HomeController', HomeController);
+        .component('home', {
+            controller: HomeController,
+            controllerAs: 'vm',
+            templateUrl: 'app/home/home.view.html'
+        });
 
     /** @ngInject */
     function HomeController($log, SAMPLE_CONSTANT) {
@@ -17,7 +21,7 @@
 
         function activate() {
             vm.greeting = 'Hello, world!';
-            $log.debug('HomeController activation');
+            $log.debug('home activation');
         }
 
         function showSampleConstant() {

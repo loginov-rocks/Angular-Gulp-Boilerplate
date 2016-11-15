@@ -48,6 +48,6 @@ var buildStyles = function () {
         .pipe($.sourcemaps.init())
         .pipe($.sass(sassOptions)).on('error', config.errorHandler('Sass'))
         .pipe($.autoprefixer()).on('error', config.errorHandler('Autoprefixer'))
-        .pipe($.sourcemaps.write())
+        .pipe($.sourcemaps.write('maps'))
         .pipe(gulp.dest(path.join(config.paths.tmp, '/serve/app/')));
 };
