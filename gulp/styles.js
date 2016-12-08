@@ -13,9 +13,9 @@ gulp.task('styles', function () {
     return buildStyles();
 });
 
-gulp.task('styles-reload', ['styles'], function () {
+gulp.task('styles-reload', function () {
     return buildStyles()
-        .pipe(browserSync.stream());
+        .pipe(browserSync.stream({match: '**/*.css'}));
 });
 
 // TODO: Exclude import of already imported scss files
