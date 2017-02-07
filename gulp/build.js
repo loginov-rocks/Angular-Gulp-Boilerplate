@@ -33,7 +33,7 @@ gulp.task('html', ['inject', 'partials'], function () {
         .pipe(cssFilter)
         .pipe($.rev())
         .pipe($.sourcemaps.init())
-        .pipe($.cssnano())
+        .pipe($.cssnano({ zindex: false }))
         .pipe($.sourcemaps.write('maps'))
         .pipe(cssFilter.restore)
         .pipe($.revReplace())
