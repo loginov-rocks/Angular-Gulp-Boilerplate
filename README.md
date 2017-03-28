@@ -4,7 +4,11 @@ Clean Angular 1.5 boilerplate with basic Gulp tasks designed to automate your da
 templates, scripts and styles concatenation, uglification and minimisation.
 
 As a result your entire Angular project will be compiled to five files (`index.html`, `app.js` and `vendor.js`,
-`app.css` and `vendor.css`).
+`app.css` and `vendor.css`) and source maps if needed.
+
+![Teaser](https://raw.githubusercontent.com/1oginov/Angular-Gulp-Boilerplate/master/misc/teaser.png)
+
+## What you will get?
 
 ![Angular](https://raw.githubusercontent.com/1oginov/Angular-Gulp-Boilerplate/master/misc/angular.png)
 ![npm](https://raw.githubusercontent.com/1oginov/Angular-Gulp-Boilerplate/master/misc/npm.png)
@@ -16,8 +20,6 @@ As a result your entire Angular project will be compiled to five files (`index.h
 ![Normalize](https://raw.githubusercontent.com/1oginov/Angular-Gulp-Boilerplate/master/misc/normalize.png)
 ![Autoprefixer](https://raw.githubusercontent.com/1oginov/Angular-Gulp-Boilerplate/master/misc/autoprefixer.png)
 ![UI-Router](https://raw.githubusercontent.com/1oginov/Angular-Gulp-Boilerplate/master/misc/ui-router.png)
-
-## What you will get?
 
 **Angular 1.5** with **UI-Router**, automated services injecting by **ng-annotate**, gathering HTML templates into
 **$templateCache** and making **source maps** for debug.
