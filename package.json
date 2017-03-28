@@ -1,6 +1,5 @@
 {
   "name": "angular-gulp-boilerplate",
-  "version": "1.0.0",
   "author": "Danila Loginov <loginovdanila@gmail.com> (https://loginov.rocks/)",
   "devDependencies": {
     "browser-sync": "^2.17.6",
