@@ -1,32 +1,30 @@
-(function () {
-    'use strict';
+(function() {
+  'use strict';
 
-    angular
-        .module('app')
-        .component('home', {
-            controller: HomeController,
-            controllerAs: 'vm',
-            templateUrl: 'app/home/home.view.html'
-        });
+  angular.module('app').component('home', {
+    controller: HomeController,
+    controllerAs: 'vm',
+    templateUrl: 'app/home/home.view.html',
+  });
 
-    /** @ngInject */
-    function HomeController($log, SAMPLE_CONSTANT) {
-        var vm = this;
+  /** @ngInject */
+  function HomeController($log, SAMPLE_CONSTANT) {
+    var vm = this;
 
-        vm.greeting = '';
+    vm.greeting = '';
 
-        vm.showSampleConstant = showSampleConstant;
+    vm.showSampleConstant = showSampleConstant;
 
-        activate();
+    activate();
 
-        function activate() {
-            vm.greeting = 'Hello, world!';
-            $log.debug('home activation');
-        }
-
-        function showSampleConstant() {
-            alert(SAMPLE_CONSTANT);
-        }
+    function activate() {
+      vm.greeting = 'Hello, world!';
+      $log.debug('home activation');
     }
+
+    function showSampleConstant() {
+      alert(SAMPLE_CONSTANT);
+    }
+  }
 
 })();
