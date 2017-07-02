@@ -1,6 +1,6 @@
 # Angular Gulp Boilerplate
 
-Clean Angular 1.5 boilerplate with basic Gulp tasks designed to automate your daily development routine such as
+Clean Angular 1.6 boilerplate with basic Gulp tasks designed to automate your daily development routine such as
 templates, scripts and styles concatenation, uglification and minimisation.
 
 As a result your entire Angular project will be compiled to five files (`index.html`, `app.js` and `vendor.js`,
@@ -21,7 +21,7 @@ As a result your entire Angular project will be compiled to five files (`index.h
 ![Autoprefixer](https://raw.githubusercontent.com/1oginov/Angular-Gulp-Boilerplate/master/misc/autoprefixer.png)
 ![UI-Router](https://raw.githubusercontent.com/1oginov/Angular-Gulp-Boilerplate/master/misc/ui-router.png)
 
-**Angular 1.5** with **UI-Router**, automated services injecting by **ng-annotate**, gathering HTML templates into
+**Angular 1.6** with **UI-Router**, automated services injecting by **ng-annotate**, gathering HTML templates into
 **$templateCache** and making **source maps** for debug.
 
 **SASS** compiler with **Autoprefixer** and making source maps for development and production versions,
