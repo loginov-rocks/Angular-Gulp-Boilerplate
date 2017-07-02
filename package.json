@@ -30,6 +30,12 @@
     "main-bower-files": "^2.13.1",
     "wiredep": "^4.0.0"
   },
+  "greenkeeper": {
+    "ignore": [
+      "gulp-filter",
+      "gulp-sourcemaps"
+    ]
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/1oginov/Angular-Gulp-Boilerplate.git"
