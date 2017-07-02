@@ -29,7 +29,7 @@ gulp.task('html', ['inject', 'partials'], function() {
       pipe($.rev()).
       pipe($.sourcemaps.init()).
       pipe($.ngAnnotate()).
-      pipe($.uglify({preserveComments: 'license'})).
+      pipe($.uglify({output: {comments: 'some'}})).
       on('error', config.errorHandler('Uglify')).
       pipe($.sourcemaps.write('maps')).
       pipe(jsFilter.restore).

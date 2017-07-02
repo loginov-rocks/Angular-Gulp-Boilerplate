@@ -1,5 +1,5 @@
-.idea/
-.tmp/
-bower_components/
-dist/
-node_modules/
+/.idea/
+/.tmp/
+/bower_components/
+/dist/
+/node_modules/
