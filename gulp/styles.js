@@ -17,10 +17,9 @@ gulp.task('styles-reload', function() {
   return buildStyles().pipe(browserSync.stream({match: '**/*.css'}));
 });
 
-// TODO: Exclude import of already imported scss files
 var buildStyles = function() {
   var injectFiles = gulp.src([
-    path.join(config.paths.src, '/app/**/*.scss'),
+    path.join(config.paths.src, '/app/**/' + (config.sass.excludeUnderscored ? '[^_]' : '') + '*.scss'),
     path.join('!' + config.paths.src, '/app/index.scss'),
   ], {read: false});
 

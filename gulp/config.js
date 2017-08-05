@@ -15,6 +15,7 @@ exports.wiredep = {
 };
 
 exports.sass = {
+  excludeUnderscored: false,
   options: {
     outputStyle: 'expanded',
     precision: 10,
