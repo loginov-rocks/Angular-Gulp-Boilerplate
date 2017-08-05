@@ -13,6 +13,7 @@ gulp.task('other', function() {
 
   return gulp.src([
     path.join(config.paths.src, '/**/*'),
+    path.join(config.paths.src, '/**/.*'),
     path.join('!' + config.paths.src, '/**/*.{html,css,js,scss}'),
   ]).pipe(fileFilter).pipe(gulp.dest(path.join(config.paths.dist, '/')));
 });
