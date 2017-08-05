@@ -4,7 +4,7 @@
     "Danila Loginov <loginovdanila@gmail.com> (https://loginov.rocks)"
   ],
   "dependencies": {
-    "angular": "^1.6.4",
+    "angular": "^1.6.5",
     "angular-ui-router": "^1.0.5",
     "normalize-css": "^7.0.0"
   },
