@@ -34,18 +34,13 @@ var buildStyles = function() {
     endtag: '// endinjector',
   };
 
-  var sassOptions = {
-    outputStyle: 'expanded',
-    precision: 10,
-  };
-
   return gulp.src([
     path.join(config.paths.src, '/app/index.scss'),
   ]).
       pipe($.inject(injectFiles, injectOptions)).
       pipe(wiredep(_.extend({}, config.wiredep))).
       pipe($.sourcemaps.init()).
-      pipe($.sass(sassOptions)).
+      pipe($.sass(config.sass.options)).
       on('error', config.errorHandler('Sass')).
       pipe($.autoprefixer()).
       on('error', config.errorHandler('Autoprefixer')).

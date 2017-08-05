@@ -14,6 +14,13 @@ exports.wiredep = {
   directory: 'bower_components',
 };
 
+exports.sass = {
+  options: {
+    outputStyle: 'expanded',
+    precision: 10,
+  },
+};
+
 exports.htmlminOptions = {
   collapseBooleanAttributes: true,
   collapseWhitespace: true,
