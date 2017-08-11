@@ -5,6 +5,8 @@
   ],
   "dependencies": {
     "angular": "^1.6.5",
+    "angular-dynamic-locale": "^0.1.32",
+    "angular-i18n": "^1.6.5",
     "angular-translate": "^2.15.2",
     "angular-translate-handler-log": "^2.15.2",
     "angular-translate-loader-static-files": "^2.15.2",
