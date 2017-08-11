@@ -90,3 +90,9 @@ Your default browser will be launched at `http://localhost:3000` serving your pr
 
 * `gulp default` is for production, cleans `dist` folder and builds your entire project into it;
 * `gulp serve` is for development, launches your project at `http://localhost:3000` and watches for changes in sources.
+
+## Credits
+
+Awesome [generator-gulp-angular](https://github.com/Swiip/generator-gulp-angular) was used as a basis for this project,
+specifically Gulp tasks. At the moment this generator is unmaintained, but I try to provide new functional and keep all
+dependencies updated.
