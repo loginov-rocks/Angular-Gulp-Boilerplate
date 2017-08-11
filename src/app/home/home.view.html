@@ -1,2 +1,7 @@
 <span ng-bind="vm.greeting"></span>
-<button ng-click="vm.showSampleConstant()">Show Sample Constant</button>
+
+<button ng-click="vm.showSampleConstant()">{{ 'home.button' | translate }}</button>
+
+<button ng-click="vm.switchLanguage('en')">In English</button>
+
+<button ng-click="vm.switchLanguage('ru')">По-русски</button>

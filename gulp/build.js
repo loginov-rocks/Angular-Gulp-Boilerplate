@@ -6,7 +6,7 @@ var $ = require('gulp-load-plugins')();
 var gulp = require('gulp');
 var path = require('path');
 
-gulp.task('build', ['html', 'fonts', 'other']);
+gulp.task('build', ['html', 'fonts', 'other', 'locales:dist']);
 
 gulp.task('html', ['inject', 'partials'], function() {
   var partialsInjectFile = gulp.src(

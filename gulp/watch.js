@@ -6,7 +6,7 @@ var browserSync = require('browser-sync');
 var gulp = require('gulp');
 var path = require('path');
 
-gulp.task('watch', ['inject'], function() {
+gulp.task('watch', ['inject', 'locales'], function() {
   gulp.watch([path.join(config.paths.src, '/*.html'), 'bower.json'],
       ['inject-reload']);
 
@@ -30,6 +30,9 @@ gulp.task('watch', ['inject'], function() {
       gulp.start('inject-reload');
     }
   });
+
+  gulp.watch(path.join(config.paths.src, '/app/**/' + config.locales.directory +
+      '/**/*.json'), ['locales-reload']);
 
   gulp.watch(path.join(config.paths.src, '/app/**/*.html'), function(event) {
     browserSync.reload(event.path);
