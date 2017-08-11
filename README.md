@@ -5,10 +5,10 @@
 [![Greenkeeper badge](https://badges.greenkeeper.io/1oginov/Angular-Gulp-Boilerplate.svg)](https://greenkeeper.io/)
 
 Clean Angular 1.6 boilerplate with basic Gulp tasks designed to automate your daily development routine such as
-templates, scripts and styles concatenation, uglification and minimisation.
+templates, scripts, styles and translations concatenation, uglification and minimisation.
 
 As a result your entire Angular project will be compiled to five files (`index.html`, `app.js` and `vendor.js`,
-`app.css` and `vendor.css`) and source maps if needed.
+`app.css` and `vendor.css`), translations files and source maps if needed.
 
 ![Teaser](https://raw.githubusercontent.com/1oginov/Angular-Gulp-Boilerplate/master/misc/teaser.png)
 
@@ -24,9 +24,10 @@ As a result your entire Angular project will be compiled to five files (`index.h
 ![Normalize](https://raw.githubusercontent.com/1oginov/Angular-Gulp-Boilerplate/master/misc/normalize.png)
 ![Autoprefixer](https://raw.githubusercontent.com/1oginov/Angular-Gulp-Boilerplate/master/misc/autoprefixer.png)
 ![UI-Router](https://raw.githubusercontent.com/1oginov/Angular-Gulp-Boilerplate/master/misc/ui-router.png)
+![angular-translate](https://raw.githubusercontent.com/1oginov/Angular-Gulp-Boilerplate/master/misc/angular-translate.png)
 
-**Angular 1.6** with **UI-Router**, automated services injecting by **ng-annotate**, gathering HTML templates into
-**$templateCache** and making **source maps** for debug.
+**Angular 1.6** with **UI-Router** and **angular-translate**, automated services injecting by **ng-annotate**, gathering
+HTML templates into **$templateCache** and making **source maps** for debug.
 
 **SASS** compiler with **Autoprefixer** and making source maps for development and production versions,
 **Normalize.css**.
@@ -39,6 +40,10 @@ As a result your entire Angular project will be compiled to five files (`index.h
 
 HTML, JS and CSS concatenation, uglification, minimisation and adding hash like app-**442e02212b**.js to avoid caching
 for production version.
+
+Dynamic internationalization and localization with translation files separated by the components. Gulp tasks can help
+you with translation files concatenation that will be used dynamically by **angular-translate**. **angular-i18n** and
+**angular-dynamic-locale** implements native dynamic Angular localization.
 
 ## Quick start
 
