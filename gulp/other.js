@@ -15,5 +15,7 @@ gulp.task('other', function() {
     path.join(config.paths.src, '/**/*'),
     path.join(config.paths.src, '/**/.*'),
     path.join('!' + config.paths.src, '/**/*.{html,css,js,scss}'),
+    path.join('!' + config.paths.src, '/app/**/' + config.locales.directory +
+        '/**/*.json'),
   ]).pipe(fileFilter).pipe(gulp.dest(path.join(config.paths.dist, '/')));
 });

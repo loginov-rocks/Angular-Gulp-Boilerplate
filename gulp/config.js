@@ -29,6 +29,17 @@ exports.htmlminOptions = {
   removeEmptyAttributes: true,
 };
 
+exports.locales = {
+  directory: 'locales',
+  angular: {
+    directory: 'bower_components/angular-i18n',
+    used: [
+      'en',
+      'ru',
+    ],
+  },
+};
+
 exports.errorHandler = function(title) {
   return function(err) {
     gulpUtil.log(gulpUtil.colors.red('[' + title + ']'), err.toString());
