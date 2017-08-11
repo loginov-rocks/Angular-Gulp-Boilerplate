@@ -5,6 +5,9 @@
   ],
   "dependencies": {
     "angular": "^1.6.5",
+    "angular-translate": "^2.15.2",
+    "angular-translate-handler-log": "^2.15.2",
+    "angular-translate-loader-static-files": "^2.15.2",
     "angular-ui-router": "^1.0.5",
     "normalize-css": "^7.0.0"
   },
