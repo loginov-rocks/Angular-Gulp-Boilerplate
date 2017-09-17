@@ -1,11 +1,26 @@
 {
   "name": "angular-gulp-boilerplate",
+  "version": "0.4.1",
+  "description": "Clean Angular 1.6 boilerplate with basic Gulp tasks",
+  "keywords": [
+    "angular",
+    "gulp",
+    "boilerplate",
+    "concatenation",
+    "uglification",
+    "minimisation",
+    "internationalization",
+    "i18n",
+    "localization",
+    "l10n"
+  ],
   "homepage": "https://github.com/1oginov/Angular-Gulp-Boilerplate",
   "bugs": "https://github.com/1oginov/Angular-Gulp-Boilerplate/issues",
   "repository": {
     "type": "git",
     "url": "https://github.com/1oginov/Angular-Gulp-Boilerplate.git"
   },
+  "license": "MIT",
   "author": "Danila Loginov <danila@loginov.rocks> (https://loginov.rocks)",
   "devDependencies": {
     "browser-sync": "^2.18.13",
