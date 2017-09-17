@@ -1,7 +1,7 @@
 {
   "name": "angular-gulp-boilerplate",
   "authors": [
-    "Danila Loginov <loginovdanila@gmail.com> (https://loginov.rocks)"
+    "Danila Loginov <danila@loginov.rocks> (https://loginov.rocks)"
   ],
   "dependencies": {
     "angular": "^1.6.5",

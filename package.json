@@ -6,7 +6,7 @@
     "type": "git",
     "url": "https://github.com/1oginov/Angular-Gulp-Boilerplate.git"
   },
-  "author": "Danila Loginov <loginovdanila@gmail.com> (https://loginov.rocks)",
+  "author": "Danila Loginov <danila@loginov.rocks> (https://loginov.rocks)",
   "devDependencies": {
     "browser-sync": "^2.18.12",
     "browser-sync-spa": "^1.0.3",
