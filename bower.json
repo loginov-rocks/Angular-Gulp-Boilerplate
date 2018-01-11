@@ -1,20 +1,35 @@
 {
   "name": "angular-gulp-boilerplate",
+  "description": "Clean Angular 1.6 boilerplate with basic Gulp tasks",
+  "keywords": [
+    "angular",
+    "gulp",
+    "boilerplate",
+    "concatenation",
+    "uglification",
+    "minimisation",
+    "internationalization",
+    "i18n",
+    "localization",
+    "l10n"
+  ],
+  "homepage": "https://github.com/1oginov/Angular-Gulp-Boilerplate",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/1oginov/Angular-Gulp-Boilerplate.git"
+  },
+  "license": "MIT",
   "authors": [
     "Danila Loginov <danila@loginov.rocks> (https://loginov.rocks)"
   ],
   "dependencies": {
-    "angular": "^1.6.6",
+    "angular": "^1.6.8",
     "angular-dynamic-locale": "^0.1.32",
-    "angular-i18n": "^1.6.6",
-    "angular-translate": "^2.15.2",
-    "angular-translate-handler-log": "^2.15.2",
-    "angular-translate-loader-static-files": "^2.15.2",
-    "angular-ui-router": "^1.0.6",
+    "angular-i18n": "^1.6.8",
+    "angular-translate": "^2.17.0",
+    "angular-translate-handler-log": "^2.17.0",
+    "angular-translate-loader-static-files": "^2.17.0",
+    "angular-ui-router": "^1.0.13",
     "normalize-css": "^7.0.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/1oginov/Angular-Gulp-Boilerplate.git"
   }
 }
