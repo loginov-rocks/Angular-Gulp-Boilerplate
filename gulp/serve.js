@@ -1,44 +1,53 @@
 'use strict';
 
-var config = require('./config');
-
 var browserSync = require('browser-sync');
-var browserSyncSpa = require('browser-sync-spa');
 var gulp = require('gulp');
 var path = require('path');
 var util = require('util');
 
+var config = require('./config');
+
+/**
+ * Build project, start watching for all changes and serve it using Browsersync.
+ * @gulpTask serve
+ */
 gulp.task('serve', ['watch'], function() {
-  browserSyncInit([path.join(config.paths.tmp, '/serve'), config.paths.src]);
+  initBrowsersync([
+    path.join(config.paths.tmp, '/serve'),
+    config.paths.src,
+  ]);
 });
 
+/**
+ * Build production version and serve it using Browsersync.
+ * @gulpTask serve:dist
+ */
 gulp.task('serve:dist', ['build'], function() {
-  browserSyncInit(config.paths.dist);
+  initBrowsersync(config.paths.dist);
 });
 
-browserSync.use(browserSyncSpa({
-  selector: '[ng-app]',
-}));
-
-function browserSyncInit(baseDir, browser) {
-  browser = browser === undefined ? 'default' : browser;
-
+/**
+ * Initialize Browsersync.
+ * @see https://browsersync.io/docs
+ * @param {string|Array} baseDir
+ * @return {void}
+ */
+function initBrowsersync(baseDir) {
   var routes = null;
+
+  // Rewrite path to `bower_components` if serving sources.
   if (baseDir === config.paths.src ||
-      (util.isArray(baseDir) && baseDir.indexOf(config.paths.src) !== -1)) {
+    (util.isArray(baseDir) && baseDir.indexOf(config.paths.src) !== -1)) {
     routes = {
       '/bower_components': 'bower_components',
     };
   }
 
-  var server = {
-    baseDir: baseDir,
-    routes: routes,
-  };
-
-  browserSync.instance = browserSync.init({
+  browserSync.init({
+    server: {
+      baseDir: baseDir,
+      routes: routes,
+    },
     startPath: '/',
-    server: server,
-    browser: browser,
   });
 }

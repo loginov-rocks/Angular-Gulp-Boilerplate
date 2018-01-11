@@ -1,48 +1,59 @@
 'use strict';
 
-var config = require('./config');
-
-var $ = require('gulp-load-plugins')();
 var gulp = require('gulp');
+var $ = require('gulp-load-plugins')();
+var lazypipe = require('lazypipe');
 var path = require('path');
 
-gulp.task('build', ['html', 'fonts', 'other', 'locales:dist']);
+var config = require('./config');
 
-gulp.task('html', ['inject', 'partials'], function() {
-  var partialsInjectFile = gulp.src(
-      path.join(config.paths.tmp, '/partials/templateCacheHtml.js'),
-      {read: false});
-  var partialsInjectOptions = {
+/**
+ * Build production version ready to deploy.
+ * @gulpTask build
+ */
+gulp.task('build', ['build-app', 'fonts', 'locales:dist', 'other']);
+
+/**
+ * Build production version of app only, without assets.
+ * @gulpTask build-app
+ * @TODO: Fix using `rev`, `revReplace` and error handling for `uglify`.
+ */
+gulp.task('build-app', ['inject', 'partials'], function() {
+  var injectPartials = gulp.src(
+    path.join(config.paths.partials, '/', config.templatecache.filename),
+    {read: false}
+  );
+
+  var injectOptions = {
     addRootSlash: false,
-    ignorePath: path.join(config.paths.tmp, '/partials'),
+    ignorePath: config.paths.partials,
     starttag: '<!-- inject:partials -->',
   };
 
-  var cssFilter = $.filter('**/*.css', {restore: true});
-  var jsFilter = $.filter('**/*.js', {restore: true});
-  var htmlFilter = $.filter('*.html', {restore: true});
+  var htmlPipe = lazypipe().
+    //pipe($.revReplace).
+    pipe($.htmlmin, config.htmlmin);
+
+  var scriptsPipe = lazypipe().
+    //pipe($.rev).
+    pipe($.sourcemaps.init).
+    pipe($.ngAnnotate).
+    pipe($.uglify, {output: {comments: 'some'}}).
+    //on('error', config.errorHandler('Uglify')).
+    pipe($.sourcemaps.write, 'maps');
+
+  var stylesPipe = lazypipe().
+    //pipe($.rev).
+    pipe($.sourcemaps.init).
+    pipe($.cssnano, {zindex: false}).
+    pipe($.sourcemaps.write, 'maps');
 
   return gulp.src(path.join(config.paths.tmp, '/serve/*.html')).
-      pipe($.inject(partialsInjectFile, partialsInjectOptions)).
-      pipe($.useref()).
-      pipe(jsFilter).
-      pipe($.rev()).
-      pipe($.sourcemaps.init()).
-      pipe($.ngAnnotate()).
-      pipe($.uglify({output: {comments: 'some'}})).
-      on('error', config.errorHandler('Uglify')).
-      pipe($.sourcemaps.write('maps')).
-      pipe(jsFilter.restore).
-      pipe(cssFilter).
-      pipe($.rev()).
-      pipe($.sourcemaps.init()).
-      pipe($.cssnano({zindex: false})).
-      pipe($.sourcemaps.write('maps')).
-      pipe(cssFilter.restore).
-      pipe($.revReplace()).
-      pipe(htmlFilter).
-      pipe($.htmlmin(config.htmlminOptions)).
-      pipe(htmlFilter.restore).
-      pipe(gulp.dest(path.join(config.paths.dist, '/'))).
-      pipe($.size({title: path.join(config.paths.dist, '/'), showFiles: true}));
+    pipe($.inject(injectPartials, injectOptions)).
+    pipe($.useref()).
+    pipe($.if('*.html', htmlPipe())).
+    pipe($.if('**/*.js', scriptsPipe())).
+    pipe($.if('**/*.css', stylesPipe())).
+    pipe(gulp.dest(config.paths.dist)).
+    pipe($.size({showFiles: true, title: 'build-app'}));
 });

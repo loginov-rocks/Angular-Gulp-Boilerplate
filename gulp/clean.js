@@ -1,12 +1,17 @@
 'use strict';
 
-var config = require('./config');
-
 var del = require('del');
 var gulp = require('gulp');
-var path = require('path');
 
+var config = require('./config');
+
+/**
+ * Clean distribution and temporary directories.
+ * @gulpTask clean
+ */
 gulp.task('clean', function() {
-  return del(
-      [path.join(config.paths.dist, '/'), path.join(config.paths.tmp, '/')]);
+  return del([
+    config.paths.dist,
+    config.paths.tmp,
+  ]);
 });
