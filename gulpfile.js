@@ -1,14 +1,20 @@
+/* eslint-env node */
+
 'use strict';
 
 var fs = require('fs');
-var gulp = require('gulp');
 
-fs.readdirSync('./gulp').filter(function(file) {
-  return (/\.js$/i).test(file);
-}).map(function(file) {
-  require('./gulp/' + file);
-});
+/**
+ * Directory containing gulp tasks.
+ * @type {string}
+ */
+var gulpDir = './gulp';
 
-gulp.task('default', ['clean'], function() {
-  gulp.start('build');
-});
+// Read gulp directory and require all JavaScript files.
+fs.readdirSync(gulpDir).
+  filter(function(file) {
+    return (/\.js$/i).test(file);
+  }).
+  map(function(file) {
+    require('./gulp/' + file);
+  });

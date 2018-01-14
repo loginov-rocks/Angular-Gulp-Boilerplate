@@ -1,48 +1,87 @@
 'use strict';
 
-var config = require('./config');
-
-var $ = require('gulp-load-plugins')();
 var gulp = require('gulp');
+var $ = require('gulp-load-plugins')();
 var path = require('path');
 
-gulp.task('build', ['html', 'fonts', 'other', 'locales:dist']);
+var config = require('./config');
 
-gulp.task('html', ['inject', 'partials'], function() {
-  var partialsInjectFile = gulp.src(
-      path.join(config.paths.tmp, '/partials/templateCacheHtml.js'),
-      {read: false});
-  var partialsInjectOptions = {
+/**
+ * Build production version ready to deploy.
+ * @gulpTask build
+ */
+gulp.task('build', ['build-app', 'fonts', 'locales:dist', 'other']);
+
+/**
+ * Build production version of app only, without assets.
+ * @gulpTask build-app
+ */
+gulp.task('build-app', ['inject', 'partials'], function() {
+  var injectPartials = gulp.src(
+    path.join(config.paths.partials, '/', config.templatecache.filename),
+    {read: false}
+  );
+
+  var injectOptions = {
     addRootSlash: false,
-    ignorePath: path.join(config.paths.tmp, '/partials'),
+    ignorePath: config.paths.partials,
     starttag: '<!-- inject:partials -->',
   };
 
-  var cssFilter = $.filter('**/*.css', {restore: true});
-  var jsFilter = $.filter('**/*.js', {restore: true});
-  var htmlFilter = $.filter('*.html', {restore: true});
+  var filterOptions = {dot: true, restore: true};
+
+  var excludeSourceMapsFilter = $.filter(['**', '!**/*.map'], filterOptions);
+  var htmlFilter = $.filter('**/*.html', filterOptions);
+  var scriptsFilter = $.filter('**/*.js', filterOptions);
+  var stylesFilter = $.filter('**/*.css', filterOptions);
 
   return gulp.src(path.join(config.paths.tmp, '/serve/*.html')).
-      pipe($.inject(partialsInjectFile, partialsInjectOptions)).
-      pipe($.useref()).
-      pipe(jsFilter).
-      pipe($.rev()).
-      pipe($.sourcemaps.init()).
-      pipe($.ngAnnotate()).
-      pipe($.uglify({output: {comments: 'some'}})).
-      on('error', config.errorHandler('Uglify')).
-      pipe($.sourcemaps.write('maps')).
-      pipe(jsFilter.restore).
-      pipe(cssFilter).
-      pipe($.rev()).
-      pipe($.sourcemaps.init()).
-      pipe($.cssnano({zindex: false})).
-      pipe($.sourcemaps.write('maps')).
-      pipe(cssFilter.restore).
-      pipe($.revReplace()).
-      pipe(htmlFilter).
-      pipe($.htmlmin(config.htmlminOptions)).
-      pipe(htmlFilter.restore).
-      pipe(gulp.dest(path.join(config.paths.dist, '/'))).
-      pipe($.size({title: path.join(config.paths.dist, '/'), showFiles: true}));
+    // Inject partials within `<!-- inject:partials -->` comments in HTML files.
+    pipe($.inject(injectPartials, injectOptions)).
+    // Concatenate scripts and styles within
+    // `<!-- build:<type>(<path>) <destination> -->` comments in HTML files.
+    pipe($.useref()).
+    // Filter scripts only.
+    pipe(scriptsFilter).
+    // Append revision hash to the filenames.
+    pipe($.rev()).
+    // Initialize source mapping.
+    pipe($.sourcemaps.init()).
+    // Inject Angular dependencies.
+    pipe($.ngAnnotate()).
+    // Obfuscate scripts preserving `some` comments.
+    pipe($.uglify({output: {comments: 'some'}})).
+    on('error', config.errorHandler('Uglify')).
+    // Store source maps.
+    pipe($.sourcemaps.write('maps')).
+    // Restore filtered.
+    pipe(scriptsFilter.restore).
+    // Filter styles only.
+    pipe(stylesFilter).
+    // Append revision hash to the filenames.
+    pipe($.rev()).
+    // Initialize source mapping.
+    pipe($.sourcemaps.init()).
+    // Minify styles preserving `z-index` values.
+    pipe($.cssnano({zindex: false})).
+    // Store source maps.
+    pipe($.sourcemaps.write('maps')).
+    // Restore filtered.
+    pipe(stylesFilter.restore).
+    // Exclude source maps to avoid it injecting instead of original files.
+    pipe(excludeSourceMapsFilter).
+    // Replace original filenames with updated.
+    pipe($.revReplace()).
+    // Restore source maps filtered out.
+    pipe(excludeSourceMapsFilter.restore).
+    // Filter HTML files.
+    pipe(htmlFilter).
+    // Minify HTML files.
+    pipe($.htmlmin(config.htmlmin)).
+    // Restore filtered.
+    pipe(htmlFilter.restore).
+    // Output files.
+    pipe(gulp.dest(config.paths.dist)).
+    // Output size of each file.
+    pipe($.size({showFiles: true, title: 'build-app'}));
 });

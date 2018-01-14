@@ -1,20 +1,22 @@
 'use strict';
 
-var config = require('./config');
-
-var $ = require('gulp-load-plugins')();
 var gulp = require('gulp');
+var $ = require('gulp-load-plugins')();
 var path = require('path');
 
+var config = require('./config');
+
+/**
+ * Create template cache from HTML partials.
+ * @gulpTask partials.
+ */
 gulp.task('partials', function() {
   return gulp.src([
     path.join(config.paths.src, '/app/**/*.html'),
     path.join(config.paths.tmp, '/serve/app/**/*.html'),
   ]).
-      pipe($.htmlmin(config.htmlminOptions)).
-      pipe($.angularTemplatecache('templateCacheHtml.js', {
-        module: config.mainAngularModule,
-        root: 'app',
-      })).
-      pipe(gulp.dest(config.paths.tmp + '/partials/'));
+    pipe($.htmlmin(config.htmlmin)).
+    pipe($.angularTemplatecache(config.templatecache.filename,
+      config.templatecache.options)).
+    pipe(gulp.dest(config.paths.partials));
 });

@@ -1,5 +1,13 @@
-/.idea/
-/.tmp/
-/bower_components/
-/dist/
-/node_modules/
+# Intellij IDEA
+.idea/dictionaries/
+.idea/libraries/
+.idea/**/tasks.xml
+.idea/**/workspace.xml
+
+# Installable
+bower_components/
+node_modules/
+
+# Generatable
+.tmp/
+dist/
