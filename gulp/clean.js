@@ -7,7 +7,7 @@ var config = require('./config');
 
 /**
  * Clean distribution and temporary directories.
- * @gulpTask clean
+ * @gulptask clean
  */
 gulp.task('clean', function() {
   return del([

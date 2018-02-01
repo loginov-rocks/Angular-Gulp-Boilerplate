@@ -12,7 +12,7 @@ var localesPath = path.join(config.paths.src, '/app/**/',
 
 /**
  * Build locales.
- * @gulpTask locales
+ * @gulptask locales
  */
 gulp.task('locales', ['locales-angular'], function() {
   return buildAppLocales();
@@ -20,7 +20,7 @@ gulp.task('locales', ['locales-angular'], function() {
 
 /**
  * Build locales to the distribution dir.
- * @gulpTask locales:dist
+ * @gulptask locales:dist
  */
 gulp.task('locales:dist', ['locales-angular:dist'], function() {
   return buildAppLocales(true).
@@ -29,7 +29,7 @@ gulp.task('locales:dist', ['locales-angular:dist'], function() {
 
 /**
  * Build locales and watch for changes.
- * @gulpTask locales:watch
+ * @gulptask locales:watch
  */
 gulp.task('locales:watch', ['locales'], function() {
   return gulp.watch(localesPath, function() {
@@ -41,7 +41,7 @@ gulp.task('locales:watch', ['locales'], function() {
 
 /**
  * Build Angular locales only.
- * @gulpTask locales-angular
+ * @gulptask locales-angular
  */
 gulp.task('locales-angular', function() {
   return buildAngularLocales();
@@ -49,7 +49,7 @@ gulp.task('locales-angular', function() {
 
 /**
  * Build Angular locales only to the distribution dir.
- * @gulpTask locales-angular:dist
+ * @gulptask locales-angular:dist
  */
 gulp.task('locales-angular:dist', function() {
   return buildAngularLocales(true).

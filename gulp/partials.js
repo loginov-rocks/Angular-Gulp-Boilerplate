@@ -8,7 +8,7 @@ var config = require('./config');
 
 /**
  * Create template cache from HTML partials.
- * @gulpTask partials.
+ * @gulptask partials
  */
 gulp.task('partials', function() {
   return gulp.src([

@@ -13,7 +13,7 @@ var destPath = path.join(config.paths.tmp, '/serve');
 
 /**
  * Inject scripts and styles into HTML files placed directly in the source dir.
- * @gulpTask inject
+ * @gulptask inject
  */
 gulp.task('inject', ['scripts', 'styles'], function() {
   var injectScripts = gulp.src(path.join(config.paths.src, '/app/**/*.js')).
@@ -40,7 +40,7 @@ gulp.task('inject', ['scripts', 'styles'], function() {
 
 /**
  * Start `inject` task and launch Browsersync reloading after.
- * @gulpTask inject:reload
+ * @gulptask inject:reload
  */
 gulp.task('inject:reload', ['inject'], function() {
   browserSync.reload();

@@ -9,7 +9,7 @@ var config = require('./config');
 
 /**
  * Build project, start watching for all changes and serve it using Browsersync.
- * @gulpTask serve
+ * @gulptask serve
  */
 gulp.task('serve', ['watch'], function() {
   initBrowsersync([
@@ -20,7 +20,7 @@ gulp.task('serve', ['watch'], function() {
 
 /**
  * Build production version and serve it using Browsersync.
- * @gulpTask serve:dist
+ * @gulptask serve:dist
  */
 gulp.task('serve:dist', ['build'], function() {
   initBrowsersync(config.paths.dist);

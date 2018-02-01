@@ -52,7 +52,7 @@ you with translation files concatenation that will be used dynamically by **angu
 Boilerplate needs `npm` and `bower` to work. For running gulp tasks from command line, install it globally:
 
 ```sh
-$ npm install -g gulp
+npm install -g gulp-cli
 ```
 
 ### Install
@@ -60,20 +60,20 @@ $ npm install -g gulp
 Clone repository from GitHub:
 
 ```sh
-$ git clone https://github.com/1oginov/Angular-Gulp-Boilerplate.git NewProject
+git clone https://github.com/1oginov/Angular-Gulp-Boilerplate.git NewProject
 ```
 
 Jump into `NewProject` directory and install `npm` dependencies:
 
 ```sh
-$ cd NewProject
-$ npm install
+cd NewProject
+npm install
 ```
 
 Next, install `bower` dependencies:
 
 ```sh
-$ bower install
+bower install
 ```
 
 And that's it! Now, you can use gulp task to check if everything is awesome:
@@ -86,10 +86,36 @@ Your default browser will be launched at `http://localhost:3000` serving your pr
 
 ## Gulp tasks
 
-### Main tasks
+### General
 
 * `gulp default` is for production, cleans `dist` folder and builds your entire project into it;
 * `gulp serve` is for development, launches your project at `http://localhost:3000` and watches for changes in sources.
+
+### Other
+
+* `gulp build` - Build production version ready to deploy.
+* `gulp build-app` - Build production version of app only, without assets.
+* `gulp clean` - Clean distribution and temporary directories.
+* `gulp fonts` - Copy and flatten fonts from Bower packages to the distribution dir.
+* `gulp inject` - Inject scripts and styles into HTML files placed directly in the source dir.
+* `gulp inject:reload` - Start `inject` task and launch Browsersync reloading after.
+* `gulp locales` - Build locales.
+* `gulp locales-angular` - Build Angular locales only.
+* `gulp locales-angular:dist` - Build Angular locales only to the distribution dir.
+* `gulp locales:dist` - Build locales to the distribution dir.
+* `gulp locales:watch` - Build locales and watch for changes.
+* `gulp other` - Copy various not handled stuff to the distribution dir.
+* `gulp partials` - Create template cache from HTML partials.
+* `gulp scripts` - Build scripts.
+* `gulp scripts:watch` - Build scripts and watch for changes.
+* `gulp serve:dist` - Build production version and serve it using Browsersync.
+* `gulp styles` - Build styles.
+* `gulp styles:watch` - Build styles and watch for changes.
+* `gulp watch` - Build project and watch for all changes.
+
+## Contribution
+
+If you want to contribute, please use the [dev](https://github.com/1oginov/Angular-Gulp-Boilerplate/tree/dev) branch.
 
 ## Credits
 

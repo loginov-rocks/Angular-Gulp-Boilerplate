@@ -8,7 +8,7 @@ var config = require('./config');
 
 /**
  * Copy various not handled stuff to the distribution dir.
- * @gulpTask other
+ * @gulptask other
  */
 gulp.task('other', function() {
   var filter = $.filter(function(file) {

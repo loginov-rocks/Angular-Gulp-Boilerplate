@@ -8,7 +8,7 @@ var config = require('./config');
 
 /**
  * Copy and flatten fonts from Bower packages to the distribution dir.
- * @gulpTask fonts
+ * @gulptask fonts
  */
 gulp.task('fonts', function() {
   return gulp.src(mainBowerFiles()).
