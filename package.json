@@ -1,6 +1,6 @@
 {
   "name": "angular-gulp-boilerplate",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "Clean Angular 1.6 boilerplate with basic Gulp tasks",
   "keywords": [
     "angular",
@@ -22,6 +22,9 @@
   },
   "license": "MIT",
   "author": "Danila Loginov <danila@loginov.rocks> (https://loginov.rocks)",
+  "scripts": {
+    "docs:gulp": "gulpdoc ./gulp/*.js"
+  },
   "devDependencies": {
     "browser-sync": "^2.23.6",
     "del": "^3.0.0",
@@ -48,6 +51,7 @@
     "gulp-uglify": "^3.0.0",
     "gulp-useref": "^3.1.4",
     "gulp-util": "^3.0.8",
+    "gulpdoc": "^1.1.0",
     "lodash": "^4.17.4",
     "main-bower-files": "^2.13.1",
     "wiredep": "^4.0.0"
