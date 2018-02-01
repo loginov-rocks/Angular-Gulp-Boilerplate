@@ -11,7 +11,7 @@ var scriptsPath = path.join(config.paths.src, '/app/**/*.js');
 
 /**
  * Build scripts.
- * @gulpTask scripts
+ * @gulptask scripts
  */
 gulp.task('scripts', function() {
   return buildScripts(scriptsPath);
@@ -19,7 +19,7 @@ gulp.task('scripts', function() {
 
 /**
  * Build scripts and watch for changes.
- * @gulpTask scripts:watch
+ * @gulptask scripts:watch
  */
 gulp.task('scripts:watch', ['scripts'], function() {
   return watch();

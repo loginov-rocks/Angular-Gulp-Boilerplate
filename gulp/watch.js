@@ -10,7 +10,7 @@ var styles = require('./styles');
 
 /**
  * Build project and watch for all changes.
- * @gulpTask watch
+ * @gulptask watch
  */
 gulp.task('watch', ['inject', 'locales:watch'], function() {
   // When any of root HTML files or `bower.json` updates, we want to launch

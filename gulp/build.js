@@ -8,13 +8,13 @@ var config = require('./config');
 
 /**
  * Build production version ready to deploy.
- * @gulpTask build
+ * @gulptask build
  */
 gulp.task('build', ['build-app', 'fonts', 'locales:dist', 'other']);
 
 /**
  * Build production version of app only, without assets.
- * @gulpTask build-app
+ * @gulptask build-app
  */
 gulp.task('build-app', ['inject', 'partials'], function() {
   var injectPartials = gulp.src(

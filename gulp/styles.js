@@ -13,7 +13,7 @@ var indexPath = path.join(config.paths.src, '/app/index.scss');
 
 /**
  * Build styles.
- * @gulpTask styles
+ * @gulptask styles
  */
 gulp.task('styles', function() {
   return buildStyles();
@@ -21,7 +21,7 @@ gulp.task('styles', function() {
 
 /**
  * Build styles and watch for changes.
- * @gulpTask styles:watch
+ * @gulptask styles:watch
  */
 gulp.task('styles:watch', ['styles'], function() {
   return watch();
