@@ -1,33 +1,38 @@
 {
   "name": "angular-gulp-boilerplate",
   "version": "0.5.1",
-  "description": "Clean Angular 1.6 boilerplate with basic Gulp tasks",
-  "keywords": [
-    "angular",
-    "gulp",
-    "boilerplate",
-    "concatenation",
-    "uglification",
-    "minimisation",
-    "internationalization",
-    "i18n",
-    "localization",
-    "l10n"
-  ],
-  "homepage": "https://github.com/1oginov/Angular-Gulp-Boilerplate",
-  "bugs": "https://github.com/1oginov/Angular-Gulp-Boilerplate/issues",
+  "description": "Clean but full featured AngularJS boilerplate using Gulp workflow and best practicies",
+  "scripts": {
+    "docs:gulp": "gulpdoc ./gulp/*.js",
+    "lint": "eslint ./gulpfile.js ./gulp/ ./src/ ./test/"
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/1oginov/Angular-Gulp-Boilerplate.git"
+    "url": "git+https://github.com/1oginov/Angular-Gulp-Boilerplate.git"
   },
-  "license": "MIT",
+  "keywords": [
+    "angular",
+    "boilerplate",
+    "concatenation",
+    "gulp",
+    "i18n",
+    "internationalization",
+    "l10n",
+    "localization",
+    "minimisation",
+    "uglification"
+  ],
   "author": "Danila Loginov <danila@loginov.rocks> (https://loginov.rocks)",
-  "scripts": {
-    "docs:gulp": "gulpdoc ./gulp/*.js"
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/1oginov/Angular-Gulp-Boilerplate/issues"
   },
+  "homepage": "https://github.com/1oginov/Angular-Gulp-Boilerplate",
   "devDependencies": {
     "browser-sync": "^2.23.6",
     "del": "^3.0.0",
+    "eslint": "^4.17.0",
+    "eslint-config-angular": "^0.5.0",
     "eslint-plugin-angular": "^3.2.0",
     "gulp": "^3.9.1",
     "gulp-angular-filesort": "^1.1.1",
