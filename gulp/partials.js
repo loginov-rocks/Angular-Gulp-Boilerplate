@@ -15,8 +15,8 @@ gulp.task('partials', function() {
     path.join(config.paths.src, '/app/**/*.html'),
     path.join(config.paths.tmp, '/serve/app/**/*.html'),
   ]).
-    pipe($.htmlmin(config.htmlmin)).
-    pipe($.angularTemplatecache(config.templatecache.filename,
-      config.templatecache.options)).
+    pipe($.htmlmin(config.plugins.htmlmin)).
+    pipe($.angularTemplatecache(config.plugins.angularTemplatecache.filename,
+      config.plugins.angularTemplatecache.options)).
     pipe(gulp.dest(config.paths.partials));
 });

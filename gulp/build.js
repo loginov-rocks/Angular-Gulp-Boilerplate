@@ -5,6 +5,7 @@ var $ = require('gulp-load-plugins')();
 var path = require('path');
 
 var config = require('./config');
+var utils = require('./utils');
 
 /**
  * Build production version ready to deploy.
@@ -18,7 +19,8 @@ gulp.task('build', ['build-app', 'fonts', 'locales:dist', 'other']);
  */
 gulp.task('build-app', ['inject', 'partials'], function() {
   var injectPartials = gulp.src(
-    path.join(config.paths.partials, '/', config.templatecache.filename),
+    path.join(config.paths.partials, '/',
+        config.plugins.angularTemplatecache.filename),
     {read: false}
   );
 
@@ -51,7 +53,7 @@ gulp.task('build-app', ['inject', 'partials'], function() {
     pipe($.ngAnnotate()).
     // Obfuscate scripts preserving `some` comments.
     pipe($.uglify({output: {comments: 'some'}})).
-    on('error', config.errorHandler('Uglify')).
+    on('error', utils.errorHandler('Uglify')).
     // Store source maps.
     pipe($.sourcemaps.write('maps')).
     // Restore filtered.
@@ -77,7 +79,7 @@ gulp.task('build-app', ['inject', 'partials'], function() {
     // Filter HTML files.
     pipe(htmlFilter).
     // Minify HTML files.
-    pipe($.htmlmin(config.htmlmin)).
+    pipe($.htmlmin(config.plugins.htmlmin)).
     // Restore filtered.
     pipe(htmlFilter.restore).
     // Output files.

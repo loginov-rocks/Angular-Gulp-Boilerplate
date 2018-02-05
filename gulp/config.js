@@ -1,24 +1,20 @@
 'use strict';
 
-var gulpUtil = require('gulp-util');
-
 /**
- * Configuration object for `gulp-htmlmin` plugin.
- * @see https://www.npmjs.com/package/gulp-htmlmin
- * @type {Object}
+ * Configuration.
+ * @type {{locales: {Object}, paths: {Object}, plugins: {Object}}}
  */
-exports.htmlmin = {
-  collapseBooleanAttributes: true,
-  collapseWhitespace: true,
-  removeAttributeQuotes: true,
-  removeEmptyAttributes: true,
+var config = {
+  locales: {},
+  paths: {},
+  plugins: {},
 };
 
 /**
  * Locales configuration.
  * @type {{angular: {directory: string, used: string[]}, directory: string}}
  */
-exports.locales = {
+config.locales = {
   angular: {
     directory: 'bower_components/angular-i18n',
     used: [
@@ -33,7 +29,7 @@ exports.locales = {
  * Directories used.
  * @type {{dist: string, fonts: string, partials: string, src: string, tmp: string}}
  */
-exports.paths = {
+config.paths = {
   dist: 'dist',
   fonts: 'dist/fonts',
   partials: '.tmp/partials',
@@ -42,24 +38,11 @@ exports.paths = {
 };
 
 /**
- * Configuration object for `gulp-sass` plugin.
- * @see https://www.npmjs.com/package/gulp-sass
- * @type {{excludeUnderscored: boolean, options: {Object}}}
- */
-exports.sass = {
-  excludeUnderscored: true,
-  options: {
-    outputStyle: 'expanded',
-    precision: 10,
-  },
-};
-
-/**
  * Configuration object for `gulp-angular-templatecache` plugin.
  * @see https://www.npmjs.com/package/gulp-angular-templatecache
  * @type {{filename: string, options: {Object}}}
  */
-exports.templatecache = {
+config.plugins.angularTemplatecache = {
   filename: 'templateCacheHtml.js',
   options: {
     module: 'app',
@@ -68,22 +51,37 @@ exports.templatecache = {
 };
 
 /**
+ * Configuration object for `gulp-htmlmin` plugin.
+ * @see https://www.npmjs.com/package/gulp-htmlmin
+ * @type {Object}
+ */
+config.plugins.htmlmin = {
+  collapseBooleanAttributes: true,
+  collapseWhitespace: true,
+  removeAttributeQuotes: true,
+  removeEmptyAttributes: true,
+};
+
+/**
+ * Configuration object for `gulp-sass` plugin.
+ * @see https://www.npmjs.com/package/gulp-sass
+ * @type {{excludeUnderscored: boolean, options: {Object}}}
+ */
+config.plugins.sass = {
+  excludeUnderscored: true,
+  options: {
+    outputStyle: 'expanded',
+    precision: 10,
+  },
+};
+
+/**
  * Configuration object for `wiredep`.
  * @see https://www.npmjs.com/package/wiredep
  * @type {Object}
  */
-exports.wiredep = {
+config.plugins.wiredep = {
   directory: 'bower_components',
 };
 
-/**
- * Common error handler.
- * @param {string} title
- * @return {Function}
- */
-exports.errorHandler = function(title) {
-  return function(err) {
-    gulpUtil.log(gulpUtil.colors.red('[' + title + ']'), err.toString());
-    this.emit('end');
-  };
-};
+module.exports = config;

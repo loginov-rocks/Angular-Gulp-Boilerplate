@@ -8,6 +8,7 @@ var path = require('path');
 var wiredep = require('wiredep').stream;
 
 var config = require('./config');
+var utils = require('./utils');
 
 var destPath = path.join(config.paths.tmp, '/serve');
 
@@ -18,7 +19,7 @@ var destPath = path.join(config.paths.tmp, '/serve');
 gulp.task('inject', ['scripts', 'styles'], function() {
   var injectScripts = gulp.src(path.join(config.paths.src, '/app/**/*.js')).
     pipe($.angularFilesort()).
-    on('error', config.errorHandler('Angular Filesort'));
+    on('error', utils.errorHandler('Angular Filesort'));
 
   var injectStyles = gulp.src(path.join(config.paths.tmp,
     '/serve/app/**/*.css'), {read: false});
@@ -34,7 +35,7 @@ gulp.task('inject', ['scripts', 'styles'], function() {
   return gulp.src(path.join(config.paths.src, '/*.html')).
     pipe($.inject(injectScripts, injectOptions)).
     pipe($.inject(injectStyles, injectOptions)).
-    pipe(wiredep(_.extend({}, config.wiredep))).
+    pipe(wiredep(_.extend({}, config.plugins.wiredep))).
     pipe(gulp.dest(destPath));
 });
 

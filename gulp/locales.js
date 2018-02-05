@@ -6,6 +6,7 @@ var $ = require('gulp-load-plugins')();
 var path = require('path');
 
 var config = require('./config');
+var utils = require('./utils');
 
 var localesPath = path.join(config.paths.src, '/app/**/',
   config.locales.directory, '/*.json');
@@ -99,7 +100,7 @@ function buildAngularLocales(isDist) {
   var dest = getDestLocalesDir(isDist);
 
   return gulp.src(src).
-    pipe($.uglify({mangle: false})).on('error', config.errorHandler('Uglify')).
+    pipe($.uglify({mangle: false})).on('error', utils.errorHandler('Uglify')).
     pipe(gulp.dest(dest));
 }
 

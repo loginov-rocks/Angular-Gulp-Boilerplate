@@ -8,6 +8,7 @@ var path = require('path');
 var wiredep = require('wiredep').stream;
 
 var config = require('./config');
+var utils = require('./utils');
 
 var indexPath = path.join(config.paths.src, '/app/index.scss');
 
@@ -36,7 +37,7 @@ function buildStyles() {
   var injectFiles = gulp.src([
     // Exclude underscored files from injecting depending on configuration.
     path.join(config.paths.src, '/app/**/',
-      (config.sass.excludeUnderscored ? '[^_]' : '') + '*.scss'),
+      (config.plugins.sass.excludeUnderscored ? '[^_]' : '') + '*.scss'),
     '!' + indexPath,
   ], {read: false});
 
@@ -54,10 +55,11 @@ function buildStyles() {
   return gulp.src(indexPath).
     pipe($.inject(injectFiles, injectOptions)).
     // Inject Bower Sass dependencies if present.
-    pipe(wiredep(_.extend({}, config.wiredep))).
+    pipe(wiredep(_.extend({}, config.plugins.wiredep))).
     pipe($.sourcemaps.init()).
-    pipe($.sass(config.sass.options)).on('error', config.errorHandler('Sass')).
-    pipe($.autoprefixer()).on('error', config.errorHandler('Autoprefixer')).
+    pipe($.sass(config.plugins.sass.options))
+    .on('error', utils.errorHandler('Sass')).
+    pipe($.autoprefixer()).on('error', utils.errorHandler('Autoprefixer')).
     pipe($.sourcemaps.write('maps')).
     pipe(gulp.dest(path.join(config.paths.tmp, '/serve/app/')));
 }
