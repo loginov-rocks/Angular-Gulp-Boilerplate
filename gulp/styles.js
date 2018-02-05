@@ -37,7 +37,7 @@ function buildStyles() {
   var injectFiles = gulp.src([
     // Exclude underscored files from injecting depending on configuration.
     path.join(config.paths.src, '/app/**/',
-      (config.plugins.sass.excludeUnderscored ? '[^_]' : '') + '*.scss'),
+      (config.sass.excludeUnderscored ? '[^_]' : '') + '*.scss'),
     '!' + indexPath,
   ], {read: false});
 
@@ -57,8 +57,7 @@ function buildStyles() {
     // Inject Bower Sass dependencies if present.
     pipe(wiredep(_.extend({}, config.plugins.wiredep))).
     pipe($.sourcemaps.init()).
-    pipe($.sass(config.plugins.sass.options))
-    .on('error', utils.errorHandler('Sass')).
+    pipe($.sass(config.plugins.sass)).on('error', utils.errorHandler('Sass')).
     pipe($.autoprefixer()).on('error', utils.errorHandler('Autoprefixer')).
     pipe($.sourcemaps.write('maps')).
     pipe(gulp.dest(path.join(config.paths.tmp, '/serve/app/')));

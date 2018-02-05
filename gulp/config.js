@@ -2,12 +2,13 @@
 
 /**
  * Configuration.
- * @type {{locales: {Object}, paths: {Object}, plugins: {Object}}}
+ * @type {{locales: {Object}, paths: {Object}, plugins: {Object}, sass: {Object}}}
  */
 var config = {
   locales: {},
   paths: {},
   plugins: {},
+  sass: {},
 };
 
 /**
@@ -27,9 +28,10 @@ config.locales = {
 
 /**
  * Directories used.
- * @type {{dist: string, fonts: string, partials: string, src: string, tmp: string}}
+ * @type {{angularTemplatecache: string, dist: string, fonts: string, partials: string, src: string, tmp: string}}
  */
 config.paths = {
+  angularTemplatecache: 'templateCacheHtml.js',
   dist: 'dist',
   fonts: 'dist/fonts',
   partials: '.tmp/partials',
@@ -40,14 +42,11 @@ config.paths = {
 /**
  * Configuration object for `gulp-angular-templatecache` plugin.
  * @see https://www.npmjs.com/package/gulp-angular-templatecache
- * @type {{filename: string, options: {Object}}}
+ * @type {Object}
  */
 config.plugins.angularTemplatecache = {
-  filename: 'templateCacheHtml.js',
-  options: {
-    module: 'app',
-    root: 'app',
-  },
+  module: 'app',
+  root: 'app',
 };
 
 /**
@@ -65,14 +64,11 @@ config.plugins.htmlmin = {
 /**
  * Configuration object for `gulp-sass` plugin.
  * @see https://www.npmjs.com/package/gulp-sass
- * @type {{excludeUnderscored: boolean, options: {Object}}}
+ * @type {Object}
  */
 config.plugins.sass = {
-  excludeUnderscored: true,
-  options: {
-    outputStyle: 'expanded',
-    precision: 10,
-  },
+  outputStyle: 'expanded',
+  precision: 10,
 };
 
 /**
@@ -82,6 +78,14 @@ config.plugins.sass = {
  */
 config.plugins.wiredep = {
   directory: 'bower_components',
+};
+
+/**
+ * Sass additional options.
+ * @type {{excludeUnderscored: boolean}}
+ */
+config.sass = {
+  excludeUnderscored: true,
 };
 
 module.exports = config;

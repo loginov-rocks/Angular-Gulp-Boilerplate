@@ -19,8 +19,7 @@ gulp.task('build', ['build-app', 'fonts', 'locales:dist', 'other']);
  */
 gulp.task('build-app', ['inject', 'partials'], function() {
   var injectPartials = gulp.src(
-    path.join(config.paths.partials, '/',
-        config.plugins.angularTemplatecache.filename),
+    path.join(config.paths.partials, '/', config.paths.angularTemplatecache),
     {read: false}
   );
 
