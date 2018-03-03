@@ -3,14 +3,11 @@
 var browserSync = require('browser-sync');
 var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
-var _ = require('lodash');
 var path = require('path');
 var wiredep = require('wiredep').stream;
 
 var config = require('./config');
 var utils = require('./utils');
-
-var indexPath = path.join(config.paths.src, '/app/index.scss');
 
 /**
  * Build styles.
@@ -29,38 +26,33 @@ gulp.task('styles:watch', ['styles'], function() {
 });
 
 /**
- * Inject all SCSS files to the index file and build CSS.
+ * Inject input SCSS styles into entry and build output CSS styles.
  * @return {*}
  */
 function buildStyles() {
-  // What to inject?
-  var injectFiles = gulp.src([
-    // Exclude underscored files from injecting depending on configuration.
-    path.join(config.paths.src, '/app/**/',
-      (config.sass.excludeUnderscored ? '[^_]' : '') + '*.scss'),
-    '!' + indexPath,
-  ], {read: false});
+  var injectStyles = gulp.src(
+      [
+        path.join(config.paths.app, '/', config.patterns.stylesInput),
+        '!' + config.entry.styles,
+      ],
+      {read: false}
+  );
 
-  // How to inject?
   var injectOptions = {
     addRootSlash: false,
-    transform: function(filePath) {
-      filePath = filePath.replace(path.join(config.paths.src, '/app/'), '');
-      return '@import "' + filePath + '";';
-    },
-    starttag: '// injector',
-    endtag: '// endinjector',
+    endtag: '// endinject',
+    starttag: '// inject',
   };
 
-  return gulp.src(indexPath).
-    pipe($.inject(injectFiles, injectOptions)).
-    // Inject Bower Sass dependencies if present.
-    pipe(wiredep(_.extend({}, config.plugins.wiredep))).
-    pipe($.sourcemaps.init()).
-    pipe($.sass(config.plugins.sass)).on('error', utils.errorHandler('Sass')).
-    pipe($.autoprefixer()).on('error', utils.errorHandler('Autoprefixer')).
-    pipe($.sourcemaps.write('maps')).
-    pipe(gulp.dest(path.join(config.paths.tmp, '/serve/app/')));
+  return gulp.src(config.entry.styles).
+      pipe($.inject(injectStyles, injectOptions)).
+      // Inject Bower Sass dependencies if present.
+      pipe(wiredep(config.plugins.wiredep)).
+      pipe($.sourcemaps.init()).
+      pipe($.sass(config.plugins.sass)).on('error', utils.errorHandler('Sass')).
+      pipe($.autoprefixer()).on('error', utils.errorHandler('Autoprefixer')).
+      pipe($.sourcemaps.write(config.paths.maps)).
+      pipe(gulp.dest(config.paths.serve));
 }
 
 /**
@@ -71,18 +63,21 @@ function buildStyles() {
 function watch(notOnlyChangedCallback) {
   notOnlyChangedCallback = notOnlyChangedCallback || null;
 
-  return gulp.watch(path.join(config.paths.src, '/app/**/*.scss'),
-    function(event) {
-      if (event.type !== 'changed') {
-        notOnlyChangedCallback();
-        return;
-      }
+  return gulp.watch(
+      path.join(config.paths.app, '/', config.patterns.stylesWatching),
+      function(event) {
+        if (event.type !== 'changed') {
+          notOnlyChangedCallback();
+          return;
+        }
 
-      buildStyles().
-        pipe($.debug({title: 'styles modified:'})).
-        // Push only CSS files to the BrowserSync stream to prevent full reload.
-        pipe(browserSync.stream({match: '**/*.css'}));
-    });
+        buildStyles().
+            pipe($.debug({title: 'styles modified:'})).
+            // Push only output CSS styles to the BrowserSync stream to prevent
+            // full reloading.
+            pipe(browserSync.stream({match: config.patterns.stylesOutput}));
+      }
+  );
 }
 
 exports.watch = watch;

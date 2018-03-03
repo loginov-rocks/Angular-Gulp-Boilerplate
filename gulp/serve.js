@@ -2,7 +2,6 @@
 
 var browserSync = require('browser-sync');
 var gulp = require('gulp');
-var path = require('path');
 var util = require('util');
 
 var config = require('./config');
@@ -13,7 +12,7 @@ var config = require('./config');
  */
 gulp.task('serve', ['watch'], function() {
   initBrowsersync([
-    path.join(config.paths.tmp, '/serve'),
+    config.paths.serve,
     config.paths.src,
   ]);
 });
@@ -37,7 +36,7 @@ function initBrowsersync(baseDir) {
 
   // Rewrite path to `bower_components` if serving sources.
   if (baseDir === config.paths.src ||
-    (util.isArray(baseDir) && baseDir.indexOf(config.paths.src) !== -1)) {
+      (util.isArray(baseDir) && baseDir.indexOf(config.paths.src) !== -1)) {
     routes = {
       '/bower_components': 'bower_components',
     };

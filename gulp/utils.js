@@ -3,7 +3,7 @@
 var gulpUtil = require('gulp-util');
 
 /**
- * Common error handler.
+ * Simple error logger.
  * @param {string} title
  * @return {Function}
  */

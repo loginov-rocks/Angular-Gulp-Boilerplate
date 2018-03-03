@@ -1,14 +1,17 @@
 'use strict';
 
+var path = require('path');
+
 /**
  * Configuration.
- * @type {{locales: {Object}, paths: {Object}, plugins: {Object}, sass: {Object}}}
+ * @type {{entry: {Object}, locales: {Object}, patterns: {Object}, paths: {Object}, plugins: {Object}}}
  */
 var config = {
+  entry: {},
   locales: {},
+  patterns: {},
   paths: {},
   plugins: {},
-  sass: {},
 };
 
 /**
@@ -27,14 +30,32 @@ config.locales = {
 };
 
 /**
- * Directories used.
- * @type {{angularTemplatecache: string, dist: string, fonts: string, partials: string, src: string, tmp: string}}
+ * Patterns used.
+ * @type {{fonts: string, html: string, locales: string, otherExcluded: string, scripts: string, stylesInput: string, stylesOutput: string, stylesWatching: string}}
+ */
+config.patterns = {
+  fonts: '**/*.{eot,otf,svg,ttf,woff,woff2}',             // relative to main Bower files
+  html: '**/*.html',                                      // relative to `config.paths.app`
+  locales: '**/' + config.locales.directory + '/*.json',  // relative to `config.paths.app`
+  otherExcluded: '**/*.{css,html,js,scss}',               // relative to `config.paths.app`
+  scripts: '**/*.js',                                     // relative to `config.paths.app`
+  stylesInput: '**/[^_]*.scss',                           // relative to `config.paths.app`
+  stylesOutput: '**/*.css',                               // relative to `config.paths.serve`
+  stylesWatching: '**/*.scss',                            // relative to `config.paths.app`
+};
+
+/**
+ * Paths used.
+ * @type {{angularTemplatecache: string, app: string, dist: string, fonts: string, maps: string, partials: string, serve: string, src: string, tmp: string}}
  */
 config.paths = {
   angularTemplatecache: 'templateCacheHtml.js',
+  app: 'src/app',
   dist: 'dist',
   fonts: 'dist/fonts',
+  maps: 'maps',
   partials: '.tmp/partials',
+  serve: '.tmp/serve',
   src: 'src',
   tmp: '.tmp',
 };
@@ -47,6 +68,15 @@ config.paths = {
 config.plugins.angularTemplatecache = {
   module: 'app',
   root: 'app',
+};
+
+/**
+ * Configuration object for `gulp-cssnano` plugin.
+ * @see https://www.npmjs.com/package/gulp-cssnano
+ * @type {Object}
+ */
+config.plugins.cssnano = {
+  zindex: false,
 };
 
 /**
@@ -72,6 +102,27 @@ config.plugins.sass = {
 };
 
 /**
+ * Configuration object for `gulp-uglify` plugin.
+ * @see https://www.npmjs.com/package/gulp-uglify
+ * @type {Object}
+ */
+config.plugins.uglify = {
+  output: {
+    comments: 'some',
+  },
+};
+
+/**
+ * Configuration object for `gulp-uglify` plugin, used when handling Angular
+ * locales.
+ * @see https://www.npmjs.com/package/gulp-uglify
+ * @type {Object}
+ */
+config.plugins.uglifyAngularLocales = {
+  mangle: false,
+};
+
+/**
  * Configuration object for `wiredep`.
  * @see https://www.npmjs.com/package/wiredep
  * @type {Object}
@@ -81,11 +132,12 @@ config.plugins.wiredep = {
 };
 
 /**
- * Sass additional options.
- * @type {{excludeUnderscored: boolean}}
+ * Entry points, set below other properties to use them.
+ * @type {{html: string, styles: string}}
  */
-config.sass = {
-  excludeUnderscored: true,
+config.entry = {
+  html: path.join(config.paths.src, '/index.html'),
+  styles: path.join(config.paths.app, '/index.scss'),
 };
 
 module.exports = config;

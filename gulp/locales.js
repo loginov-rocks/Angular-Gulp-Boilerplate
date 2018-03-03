@@ -8,8 +8,7 @@ var path = require('path');
 var config = require('./config');
 var utils = require('./utils');
 
-var localesPath = path.join(config.paths.src, '/app/**/',
-  config.locales.directory, '/*.json');
+var localesPath = path.join(config.paths.app, '/', config.patterns.locales);
 
 /**
  * Build locales.
@@ -20,12 +19,12 @@ gulp.task('locales', ['locales-angular'], function() {
 });
 
 /**
- * Build locales to the distribution dir.
+ * Build locales to distribution dir.
  * @gulptask locales:dist
  */
 gulp.task('locales:dist', ['locales-angular:dist'], function() {
   return buildAppLocales(true).
-    pipe($.size({title: 'locales'}));
+      pipe($.size({title: 'locales'}));
 });
 
 /**
@@ -33,11 +32,14 @@ gulp.task('locales:dist', ['locales-angular:dist'], function() {
  * @gulptask locales:watch
  */
 gulp.task('locales:watch', ['locales'], function() {
-  return gulp.watch(localesPath, function() {
-    buildAppLocales().
-      pipe($.debug({title: 'locales modified:'})).
-      pipe(browserSync.stream());
-  });
+  return gulp.watch(
+      localesPath,
+      function() {
+        buildAppLocales().
+            pipe($.debug({title: 'locales modified:'})).
+            pipe(browserSync.stream());
+      }
+  );
 });
 
 /**
@@ -49,16 +51,16 @@ gulp.task('locales-angular', function() {
 });
 
 /**
- * Build Angular locales only to the distribution dir.
+ * Build Angular locales only to distribution dir.
  * @gulptask locales-angular:dist
  */
 gulp.task('locales-angular:dist', function() {
   return buildAngularLocales(true).
-    pipe($.size({title: 'locales-angular'}));
+      pipe($.size({title: 'locales-angular'}));
 });
 
 /**
- * Build app locales to the flagged destination.
+ * Build app locales to flagged destination.
  * @param {boolean} [isDist=false]
  * @return {*}
  */
@@ -68,12 +70,12 @@ function buildAppLocales(isDist) {
   var dest = getDestLocalesDir(isDist);
 
   return gulp.src(localesPath).
-    pipe($.localesBundler({omit: config.locales.directory})).
-    pipe(gulp.dest(dest));
+      pipe($.localesBundler({omit: config.locales.directory})).
+      pipe(gulp.dest(dest));
 }
 
 /**
- * Build Angular locales to the flagged destination.
+ * Build Angular locales to flagged destination.
  * @param {boolean} [isDist=false]
  * @return {*}
  */
@@ -81,8 +83,8 @@ function buildAngularLocales(isDist) {
   isDist = isDist || false;
 
   // Skip if no Angular locales used.
-  if (config.locales.angular.used === undefined ||
-    !config.locales.angular.used.length) {
+  if (config.locales.angular.used === undefined || // eslint-disable-line angular/definedundefined
+      !config.locales.angular.used.length) {
     return;
   }
 
@@ -100,12 +102,13 @@ function buildAngularLocales(isDist) {
   var dest = getDestLocalesDir(isDist);
 
   return gulp.src(src).
-    pipe($.uglify({mangle: false})).on('error', utils.errorHandler('Uglify')).
-    pipe(gulp.dest(dest));
+      pipe($.uglify(config.plugins.uglifyAngularLocales)).
+      on('error', utils.errorHandler('Uglify')).
+      pipe(gulp.dest(dest));
 }
 
 /**
- * Get destination locales dir for the flagged destination.
+ * Get destination locales dir for flagged destination.
  * @param {boolean} [isDist=false]
  * @return {string}
  */
@@ -116,5 +119,5 @@ function getDestLocalesDir(isDist) {
     return path.join(config.paths.dist, '/', config.locales.directory);
   }
 
-  return path.join(config.paths.tmp, '/serve/', config.locales.directory);
+  return path.join(config.paths.serve, '/', config.locales.directory);
 }
