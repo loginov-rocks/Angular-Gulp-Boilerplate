@@ -1,12 +1,11 @@
-/* Do not remove the comments below. It's the markers used by wiredep to inject sass dependencies when defined in the
-bower.json of your dependencies */
 // bower:scss
+// Bower Sass dependencies will be imported here after Gulp `styles` task.
 // endbower
 
 body {
-    font: normal 16px/150% Arial, Helvetica, sans-serif;
+  font: normal 16px/150% Arial, Helvetica, sans-serif;
 }
 
-/* Do not remove the comments below. It's the markers used by gulp-inject to inject all your sass files automatically */
 // inject
+// Input styles will be imported here after Gulp `styles` task.
 // endinject

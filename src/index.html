@@ -5,15 +5,15 @@
     <meta charset="utf-8">
     <title>Title</title>
 
-    <!-- build:css({.tmp/serve,src}) styles/vendor.css -->
+    <!-- build:css(src) styles/vendor.css -->
     <!-- bower:css -->
-    <!-- run `gulp inject` to automatically populate bower styles dependencies -->
+    <!-- Bower dependencies styles will go here after Gulp `inject` task. -->
     <!-- endbower -->
     <!-- endbuild -->
 
-    <!-- build:css({.tmp/serve,src}) styles/app.css -->
+    <!-- build:css(.tmp/serve) styles/app.css -->
     <!-- inject:css -->
-    <!-- css files will be automatically insert here -->
+    <!-- Output styles will go here after Gulp `inject` task. -->
     <!-- endinject -->
     <!-- endbuild -->
 
@@ -24,18 +24,20 @@
 
 <!-- build:js(src) scripts/vendor.js -->
 <!-- bower:js -->
-<!-- run `gulp inject` to automatically populate bower script dependencies -->
+<!-- Bower dependencies scripts will go here after Gulp `inject` task. -->
 <!-- endbower -->
 <!-- endbuild -->
 
-<!-- build:js({.tmp/serve,.tmp/partials,src}) scripts/app.js -->
+<!-- build:js({src,.tmp/partials}) scripts/app.js -->
+
 <!-- inject:js -->
-<!-- js files will be automatically insert here -->
+<!-- Scripts will go here after Gulp `inject` task. -->
 <!-- endinject -->
 
 <!-- inject:partials -->
-<!-- angular templates will be automatically converted in js and inserted here -->
+<!-- Angular templates will be converted to scripts and go here after Gulp `build` task. -->
 <!-- endinject -->
+
 <!-- endbuild -->
 
 </body>
