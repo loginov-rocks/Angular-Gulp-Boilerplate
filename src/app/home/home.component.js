@@ -8,10 +8,11 @@
   });
 
   /** @ngInject */
-  function HomeController($log, $translate, SAMPLE_CONSTANT) {
+  function HomeController($log, $rootScope, $translate, SAMPLE_CONSTANT) {
     var vm = this;
 
-    vm.greeting = '';
+    // Scope variables go here:
+    // vm.variable = 'value';
 
     vm.showSampleConstant = showSampleConstant;
     vm.switchLanguage = switchLanguage;
@@ -19,10 +20,6 @@
     activate();
 
     function activate() {
-      $translate('home.greeting').then(function(message) {
-        vm.greeting = message;
-      });
-
       $log.debug('home activated');
     }
 
