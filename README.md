@@ -79,7 +79,7 @@ bower install
 And that's it! Now, you can use gulp task to check if everything is awesome:
 
 ```sh
-$ gulp serve
+gulp serve
 ```
 
 Your default browser will be launched at `http://localhost:3000` serving your project.
@@ -88,23 +88,23 @@ Your default browser will be launched at `http://localhost:3000` serving your pr
 
 ### General
 
-* `gulp default` is for production, cleans `dist` folder and builds your entire project into it;
-* `gulp serve` is for development, launches your project at `http://localhost:3000` and watches for changes in sources.
+* `gulp default` - Clean used directories and build production version ready to deploy.
+* `gulp serve` - Build project, start watching for all changes and serve it using Browsersync.
 
 ### Other
 
 * `gulp build` - Build production version ready to deploy.
 * `gulp build-app` - Build production version of app only, without assets.
 * `gulp clean` - Clean distribution and temporary directories.
-* `gulp fonts` - Copy and flatten fonts from Bower packages to the distribution dir.
-* `gulp inject` - Inject scripts and styles into HTML files placed directly in the source dir.
+* `gulp fonts` - Copy and flatten fonts from Bower packages to distribution dir.
+* `gulp inject` - Inject scripts and styles into HTML entry.
 * `gulp inject:reload` - Start `inject` task and launch Browsersync reloading after.
 * `gulp locales` - Build locales.
 * `gulp locales-angular` - Build Angular locales only.
-* `gulp locales-angular:dist` - Build Angular locales only to the distribution dir.
-* `gulp locales:dist` - Build locales to the distribution dir.
+* `gulp locales-angular:dist` - Build Angular locales only to distribution dir.
+* `gulp locales:dist` - Build locales to distribution dir.
 * `gulp locales:watch` - Build locales and watch for changes.
-* `gulp other` - Copy various not handled stuff to the distribution dir.
+* `gulp other` - Copy various not handled stuff to distribution dir.
 * `gulp partials` - Create template cache from HTML partials.
 * `gulp scripts` - Build scripts.
 * `gulp scripts:watch` - Build scripts and watch for changes.
