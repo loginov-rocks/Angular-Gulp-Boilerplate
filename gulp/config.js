@@ -1,24 +1,24 @@
 'use strict';
 
-var gulpUtil = require('gulp-util');
+var path = require('path');
 
 /**
- * Configuration object for `gulp-htmlmin` plugin.
- * @see https://www.npmjs.com/package/gulp-htmlmin
- * @type {Object}
+ * Configuration.
+ * @type {{entry: {Object}, locales: {Object}, patterns: {Object}, paths: {Object}, plugins: {Object}}}
  */
-exports.htmlmin = {
-  collapseBooleanAttributes: true,
-  collapseWhitespace: true,
-  removeAttributeQuotes: true,
-  removeEmptyAttributes: true,
+var config = {
+  entry: {},
+  locales: {},
+  patterns: {},
+  paths: {},
+  plugins: {},
 };
 
 /**
  * Locales configuration.
  * @type {{angular: {directory: string, used: string[]}, directory: string}}
  */
-exports.locales = {
+config.locales = {
   angular: {
     directory: 'bower_components/angular-i18n',
     used: [
@@ -30,41 +30,96 @@ exports.locales = {
 };
 
 /**
- * Directories used.
- * @type {{dist: string, fonts: string, partials: string, src: string, tmp: string}}
+ * Patterns used.
+ * @type {{fonts: string, html: string, locales: string, otherExcluded: string, scripts: string, stylesInput: string, stylesOutput: string, stylesWatching: string}}
  */
-exports.paths = {
+config.patterns = {
+  fonts: '**/*.{eot,otf,svg,ttf,woff,woff2}',             // relative to main Bower files
+  html: '**/*.html',                                      // relative to `config.paths.app`
+  locales: '**/' + config.locales.directory + '/*.json',  // relative to `config.paths.app`
+  otherExcluded: '**/*.{css,html,js,scss}',               // relative to `config.paths.app`
+  scripts: '**/*.js',                                     // relative to `config.paths.app`
+  stylesInput: '**/[^_]*.scss',                           // relative to `config.paths.app`
+  stylesOutput: '**/*.css',                               // relative to `config.paths.serve`
+  stylesWatching: '**/*.scss',                            // relative to `config.paths.app`
+};
+
+/**
+ * Paths used.
+ * @type {{angularTemplatecache: string, app: string, dist: string, fonts: string, maps: string, partials: string, serve: string, src: string, tmp: string}}
+ */
+config.paths = {
+  angularTemplatecache: 'templateCacheHtml.js',
+  app: 'src/app',
   dist: 'dist',
   fonts: 'dist/fonts',
+  maps: 'maps',
   partials: '.tmp/partials',
+  serve: '.tmp/serve',
   src: 'src',
   tmp: '.tmp',
 };
 
 /**
+ * Configuration object for `gulp-angular-templatecache` plugin.
+ * @see https://www.npmjs.com/package/gulp-angular-templatecache
+ * @type {Object}
+ */
+config.plugins.angularTemplatecache = {
+  module: 'app',
+  root: 'app',
+};
+
+/**
+ * Configuration object for `gulp-cssnano` plugin.
+ * @see https://www.npmjs.com/package/gulp-cssnano
+ * @type {Object}
+ */
+config.plugins.cssnano = {
+  zindex: false,
+};
+
+/**
+ * Configuration object for `gulp-htmlmin` plugin.
+ * @see https://www.npmjs.com/package/gulp-htmlmin
+ * @type {Object}
+ */
+config.plugins.htmlmin = {
+  collapseBooleanAttributes: true,
+  collapseWhitespace: true,
+  removeAttributeQuotes: true,
+  removeEmptyAttributes: true,
+};
+
+/**
  * Configuration object for `gulp-sass` plugin.
  * @see https://www.npmjs.com/package/gulp-sass
- * @type {{excludeUnderscored: boolean, options: {Object}}}
+ * @type {Object}
  */
-exports.sass = {
-  excludeUnderscored: true,
-  options: {
-    outputStyle: 'expanded',
-    precision: 10,
+config.plugins.sass = {
+  outputStyle: 'expanded',
+  precision: 10,
+};
+
+/**
+ * Configuration object for `gulp-uglify` plugin.
+ * @see https://www.npmjs.com/package/gulp-uglify
+ * @type {Object}
+ */
+config.plugins.uglify = {
+  output: {
+    comments: 'some',
   },
 };
 
 /**
- * Configuration object for `gulp-angular-templatecache` plugin.
- * @see https://www.npmjs.com/package/gulp-angular-templatecache
- * @type {{filename: string, options: {Object}}}
+ * Configuration object for `gulp-uglify` plugin, used when handling Angular
+ * locales.
+ * @see https://www.npmjs.com/package/gulp-uglify
+ * @type {Object}
  */
-exports.templatecache = {
-  filename: 'templateCacheHtml.js',
-  options: {
-    module: 'app',
-    root: 'app',
-  },
+config.plugins.uglifyAngularLocales = {
+  mangle: false,
 };
 
 /**
@@ -72,18 +127,17 @@ exports.templatecache = {
  * @see https://www.npmjs.com/package/wiredep
  * @type {Object}
  */
-exports.wiredep = {
+config.plugins.wiredep = {
   directory: 'bower_components',
 };
 
 /**
- * Common error handler.
- * @param {string} title
- * @return {Function}
+ * Entry points, set below other properties to use them.
+ * @type {{html: string, styles: string}}
  */
-exports.errorHandler = function(title) {
-  return function(err) {
-    gulpUtil.log(gulpUtil.colors.red('[' + title + ']'), err.toString());
-    this.emit('end');
-  };
+config.entry = {
+  html: path.join(config.paths.src, '/index.html'),
+  styles: path.join(config.paths.app, '/index.scss'),
 };
+
+module.exports = config;

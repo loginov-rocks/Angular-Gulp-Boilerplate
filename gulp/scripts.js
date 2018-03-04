@@ -7,7 +7,7 @@ var path = require('path');
 
 var config = require('./config');
 
-var scriptsPath = path.join(config.paths.src, '/app/**/*.js');
+var scriptsPath = path.join(config.paths.app, '/', config.patterns.scripts);
 
 /**
  * Build scripts.
@@ -32,8 +32,8 @@ gulp.task('scripts:watch', ['scripts'], function() {
  */
 function buildScripts(src) {
   return gulp.src(src).
-    pipe($.eslint()).
-    pipe($.eslint.format());
+      pipe($.eslint()).
+      pipe($.eslint.format());
 }
 
 /**
@@ -44,16 +44,19 @@ function buildScripts(src) {
 function watch(notOnlyChangedCallback) {
   notOnlyChangedCallback = notOnlyChangedCallback || null;
 
-  return gulp.watch(scriptsPath, function(event) {
-    if (event.type !== 'changed') {
-      notOnlyChangedCallback();
-      return;
-    }
+  return gulp.watch(
+      scriptsPath,
+      function(event) {
+        if (event.type !== 'changed') {
+          notOnlyChangedCallback();
+          return;
+        }
 
-    buildScripts(event.path).
-      pipe($.debug({title: 'scripts modified:'})).
-      pipe(browserSync.stream());
-  });
+        buildScripts(event.path).
+            pipe($.debug({title: 'scripts modified:'})).
+            pipe(browserSync.stream());
+      }
+  );
 }
 
 exports.watch = watch;

@@ -1,34 +1,44 @@
 {
   "name": "angular-gulp-boilerplate",
-  "version": "0.5.1",
-  "description": "Clean Angular 1.6 boilerplate with basic Gulp tasks",
-  "keywords": [
-    "angular",
-    "gulp",
-    "boilerplate",
-    "concatenation",
-    "uglification",
-    "minimisation",
-    "internationalization",
-    "i18n",
-    "localization",
-    "l10n"
-  ],
-  "homepage": "https://github.com/1oginov/Angular-Gulp-Boilerplate",
-  "bugs": "https://github.com/1oginov/Angular-Gulp-Boilerplate/issues",
+  "version": "0.6.0",
+  "description": "Clean but full featured AngularJS boilerplate using Gulp workflow and best practicies",
+  "scripts": {
+    "docs:gulp": "gulpdoc ./gulp/*.js",
+    "lint": "eslint ./gulpfile.js ./gulp/ ./src/ ./test/",
+    "update": "ncu -a",
+    "update:bower": "ncu -a -m bower"
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/1oginov/Angular-Gulp-Boilerplate.git"
+    "url": "git+https://github.com/1oginov/Angular-Gulp-Boilerplate.git"
   },
-  "license": "MIT",
+  "keywords": [
+    "angular",
+    "angularjs",
+    "boilerplate",
+    "concatenation",
+    "gulp",
+    "i18n",
+    "internationalization",
+    "l10n",
+    "localization",
+    "minimisation",
+    "seed",
+    "skeleton",
+    "uglification"
+  ],
   "author": "Danila Loginov <danila@loginov.rocks> (https://loginov.rocks)",
-  "scripts": {
-    "docs:gulp": "gulpdoc ./gulp/*.js"
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/1oginov/Angular-Gulp-Boilerplate/issues"
   },
+  "homepage": "https://github.com/1oginov/Angular-Gulp-Boilerplate",
   "devDependencies": {
     "browser-sync": "^2.23.6",
     "del": "^3.0.0",
-    "eslint-plugin-angular": "^3.2.0",
+    "eslint": "^4.18.2",
+    "eslint-config-angular": "^0.5.0",
+    "eslint-plugin-angular": "^3.3.0",
     "gulp": "^3.9.1",
     "gulp-angular-filesort": "^1.1.1",
     "gulp-angular-templatecache": "^2.2.0",
@@ -39,21 +49,21 @@
     "gulp-filter": "^5.1.0",
     "gulp-flatten": "^0.4.0",
     "gulp-htmlmin": "^4.0.0",
-    "gulp-inject": "^4.3.0",
+    "gulp-inject": "^4.3.1",
     "gulp-load-plugins": "^1.5.0",
     "gulp-locales-bundler": "^1.0.0",
     "gulp-ng-annotate": "^2.1.0",
     "gulp-rev": "^8.1.1",
-    "gulp-rev-replace": "^0.4.3",
+    "gulp-rev-replace": "^0.4.4",
     "gulp-sass": "^3.1.0",
     "gulp-size": "^3.0.0",
     "gulp-sourcemaps": "^2.6.4",
     "gulp-uglify": "^3.0.0",
     "gulp-useref": "^3.1.4",
     "gulp-util": "^3.0.8",
-    "gulpdoc": "^1.1.0",
-    "lodash": "^4.17.4",
+    "gulpdoc": "^1.1.1",
     "main-bower-files": "^2.13.1",
+    "npm-check-updates": "^2.14.1",
     "wiredep": "^4.0.0"
   }
 }

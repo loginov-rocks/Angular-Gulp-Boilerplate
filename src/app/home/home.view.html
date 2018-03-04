@@ -1,7 +1,18 @@
-<span ng-bind="vm.greeting"></span>
+<h1>Angular Gulp Boilerplate</h1>
 
-<button ng-click="vm.showSampleConstant()">{{ 'home.button' | translate }}</button>
+<h2>{{ 'home.greeting' | translate }}</h2>
 
-<button ng-click="vm.switchLanguage('en')">In English</button>
+<p>
+    {{ 'home.details' | translate }}
+    <a href="https://github.com/1oginov/Angular-Gulp-Boilerplate"
+       target="_blank">https://github.com/1oginov/Angular-Gulp-Boilerplate</a>
+</p>
 
-<button ng-click="vm.switchLanguage('ru')">По-русски</button>
+<p>
+    <button ng-click="vm.switchLanguage('en')">In English</button>
+    <button ng-click="vm.switchLanguage('ru')">По-русски</button>
+</p>
+
+<p>
+    <button ng-click="vm.showSampleConstant()">{{ 'home.button' | translate }}</button>
+</p>

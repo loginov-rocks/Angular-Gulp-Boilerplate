@@ -11,12 +11,11 @@ var config = require('./config');
  * @gulptask partials
  */
 gulp.task('partials', function() {
-  return gulp.src([
-    path.join(config.paths.src, '/app/**/*.html'),
-    path.join(config.paths.tmp, '/serve/app/**/*.html'),
-  ]).
-    pipe($.htmlmin(config.htmlmin)).
-    pipe($.angularTemplatecache(config.templatecache.filename,
-      config.templatecache.options)).
-    pipe(gulp.dest(config.paths.partials));
+  return gulp.src(path.join(config.paths.app, '/', config.patterns.html)).
+      pipe($.htmlmin(config.plugins.htmlmin)).
+      pipe($.angularTemplatecache(
+          config.paths.angularTemplatecache,
+          config.plugins.angularTemplatecache
+      )).
+      pipe(gulp.dest(config.paths.partials));
 });

@@ -14,6 +14,7 @@
 
     $translateProvider.
         useStaticFilesLoader({
+          // Update `config.locales.directory` in `gulp/config.js` if change.
           prefix: '/locales/',
           suffix: '.json',
         }).
@@ -23,6 +24,8 @@
         useMissingTranslationHandlerLog();
 
     tmhDynamicLocaleProvider.
+        // Angular locales pattern used by `buildAngularLocales()` in
+        // `gulp/locales.js`.
         localeLocationPattern('/locales/angular-locale_{{locale}}.js').
         defaultLocale('en');
   }
