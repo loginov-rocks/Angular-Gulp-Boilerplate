@@ -49,7 +49,7 @@ config.patterns = {
  * @type {{angularTemplatecache: string, app: string, dist: string, fonts: string, maps: string, partials: string, serve: string, src: string, tmp: string}}
  */
 config.paths = {
-  angularTemplatecache: 'templateCacheHtml.js',
+  angularTemplatecache: 'angularTemplatecache.js',
   app: 'src/app',
   dist: 'dist',
   fonts: 'dist/fonts',
