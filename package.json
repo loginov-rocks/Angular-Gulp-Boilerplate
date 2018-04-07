@@ -6,8 +6,8 @@
   "scripts": {
     "docs:gulp": "gulpdoc ./gulp/*.js",
     "lint": "eslint ./cli.js ./gulpfile.js ./gulp/ ./src/ ./test/",
-    "update": "ncu -a",
-    "update:bower": "ncu -a -m bower"
+    "update:bower": "ncu -a -m bower --packageFile bower.json",
+    "update:dev": "ncu -a --packageFile package.json"
   },
   "repository": {
     "type": "git",
