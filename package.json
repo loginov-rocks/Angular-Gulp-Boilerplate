@@ -5,7 +5,7 @@
   "bin": "./cli.js",
   "scripts": {
     "docs:gulp": "gulpdoc ./gulp/*.js",
-    "lint": "eslint ./gulpfile.js ./gulp/ ./src/ ./test/",
+    "lint": "eslint ./cli.js ./gulpfile.js ./gulp/ ./src/ ./test/",
     "update": "ncu -a",
     "update:bower": "ncu -a -m bower"
   },
