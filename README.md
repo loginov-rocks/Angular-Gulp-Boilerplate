@@ -113,6 +113,13 @@ Your default browser will be launched at `http://localhost:3000` serving your pr
 * `gulp styles:watch` - Build styles and watch for changes.
 * `gulp watch` - Build project and watch for all changes.
 
+## Npm scripts
+
+* `npm run docs:gulp` - Make markdown file containing Gulp tasks description.
+* `npm run lint` - Lint scripts.
+* `npm run update:bower` - Update dependencies in `bower.json` to the latest versions, run `bower install` after.
+* `npm run update:dev` - Update dependencies in `package.json` to the latest versions, run `npm install` after.
+
 ## Contribution
 
 If you want to contribute, please use the [dev](https://github.com/1oginov/Angular-Gulp-Boilerplate/tree/dev) branch.
@@ -121,4 +128,4 @@ If you want to contribute, please use the [dev](https://github.com/1oginov/Angul
 
 Awesome [generator-gulp-angular](https://github.com/Swiip/generator-gulp-angular) was used as a basis for this project,
 specifically Gulp tasks. At the moment this generator is unmaintained, but I try to provide new functional and keep all
-dependencies updated.
+dependencies up to date.
