@@ -1,16 +1,16 @@
 'use strict';
 
-var browserSync = require('browser-sync');
-var gulp = require('gulp');
-var util = require('util');
+const browserSync = require('browser-sync');
+const gulp = require('gulp');
+const util = require('util');
 
-var config = require('./config');
+const config = require('./config');
 
 /**
  * Build project, start watching for all changes and serve it using Browsersync.
  * @gulptask serve
  */
-gulp.task('serve', ['watch'], function() {
+gulp.task('serve', ['watch'], () => {
   initBrowsersync([
     config.paths.serve,
     config.paths.src,
@@ -21,7 +21,7 @@ gulp.task('serve', ['watch'], function() {
  * Build production version and serve it using Browsersync.
  * @gulptask serve:dist
  */
-gulp.task('serve:dist', ['build'], function() {
+gulp.task('serve:dist', ['build'], () => {
   initBrowsersync(config.paths.dist);
 });
 
@@ -32,7 +32,7 @@ gulp.task('serve:dist', ['build'], function() {
  * @return {void}
  */
 function initBrowsersync(baseDir) {
-  var routes = null;
+  let routes = null;
 
   // Rewrite path to `bower_components` if serving sources.
   if (baseDir === config.paths.src ||

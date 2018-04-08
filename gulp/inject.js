@@ -1,31 +1,29 @@
 'use strict';
 
-var browserSync = require('browser-sync');
-var gulp = require('gulp');
-var $ = require('gulp-load-plugins')();
-var path = require('path');
-var wiredep = require('wiredep').stream;
+const browserSync = require('browser-sync');
+const gulp = require('gulp');
+const $ = require('gulp-load-plugins')();
+const path = require('path');
+const wiredep = require('wiredep').stream;
 
-var config = require('./config');
-var utils = require('./utils');
+const config = require('./config');
+const utils = require('./utils');
 
 /**
  * Inject scripts and styles into HTML entry.
  * @gulptask inject
  */
-gulp.task('inject', ['scripts', 'styles'], function() {
-  var injectScripts = gulp.src(
-      path.join(config.paths.serve, '/', config.patterns.scripts)
-  ).
+gulp.task('inject', ['scripts', 'styles'], () => {
+  const injectScripts = gulp.src(
+      path.join(config.paths.serve, config.patterns.scripts)).
       pipe($.angularFilesort()).
       on('error', utils.errorHandler('Angular Filesort'));
 
-  var injectStyles = gulp.src(
-      path.join(config.paths.serve, '/', config.patterns.stylesOutput),
-      {read: false}
-  );
+  const injectStyles = gulp.src(
+      path.join(config.paths.serve, config.patterns.stylesOutput),
+      {read: false});
 
-  var injectOptions = {
+  const injectOptions = {
     addRootSlash: false,
     ignorePath: [
       config.paths.serve,
@@ -44,6 +42,6 @@ gulp.task('inject', ['scripts', 'styles'], function() {
  * Start `inject` task and launch Browsersync reloading after.
  * @gulptask inject:reload
  */
-gulp.task('inject:reload', ['inject'], function() {
+gulp.task('inject:reload', ['inject'], () => {
   browserSync.reload();
 });

@@ -1,29 +1,25 @@
 'use strict';
 
-var browserSync = require('browser-sync');
-var gulp = require('gulp');
-var $ = require('gulp-load-plugins')();
-var path = require('path');
+const browserSync = require('browser-sync');
+const gulp = require('gulp');
+const $ = require('gulp-load-plugins')();
+const path = require('path');
 
-var config = require('./config');
+const config = require('./config');
 
-var scriptsPath = path.join(config.paths.app, '/', config.patterns.scripts);
+const scriptsPath = path.join(config.paths.app, config.patterns.scripts);
 
 /**
  * Build scripts.
  * @gulptask scripts
  */
-gulp.task('scripts', function() {
-  return buildScripts(scriptsPath);
-});
+gulp.task('scripts', () => buildScripts(scriptsPath));
 
 /**
  * Build scripts and watch for changes.
  * @gulptask scripts:watch
  */
-gulp.task('scripts:watch', ['scripts'], function() {
-  return watch();
-});
+gulp.task('scripts:watch', ['scripts'], () => watch());
 
 /**
  * Build scripts from specified sources.
@@ -48,7 +44,7 @@ function watch(notOnlyChangedCallback) {
 
   return gulp.watch(
       scriptsPath,
-      function(event) {
+      (event) => {
         if (event.type !== 'changed') {
           notOnlyChangedCallback();
           return;
@@ -57,8 +53,9 @@ function watch(notOnlyChangedCallback) {
         buildScripts(event.path).
             pipe($.debug({title: 'scripts modified:'})).
             pipe(browserSync.stream());
-      }
-  );
+      });
 }
 
-exports.watch = watch;
+module.exports = {
+  watch,
+};

@@ -1,21 +1,20 @@
 'use strict';
 
-var gulp = require('gulp');
-var $ = require('gulp-load-plugins')();
-var path = require('path');
+const gulp = require('gulp');
+const $ = require('gulp-load-plugins')();
+const path = require('path');
 
-var config = require('./config');
+const config = require('./config');
 
 /**
  * Create template cache from HTML partials.
  * @gulptask partials
  */
-gulp.task('partials', function() {
-  return gulp.src(path.join(config.paths.app, '/', config.patterns.html)).
+gulp.task('partials', () => {
+  return gulp.src(path.join(config.paths.app, config.patterns.html)).
       pipe($.htmlmin(config.plugins.htmlmin)).
       pipe($.angularTemplatecache(
           config.paths.angularTemplatecache,
-          config.plugins.angularTemplatecache
-      )).
+          config.plugins.angularTemplatecache)).
       pipe(gulp.dest(config.paths.partials));
 });

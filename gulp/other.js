@@ -1,19 +1,17 @@
 'use strict';
 
-var gulp = require('gulp');
-var $ = require('gulp-load-plugins')();
-var path = require('path');
+const gulp = require('gulp');
+const $ = require('gulp-load-plugins')();
+const path = require('path');
 
-var config = require('./config');
+const config = require('./config');
 
 /**
- * Copy various not handled stuff to distribution dir.
+ * Copy constious not handled stuff to distribution dir.
  * @gulptask other
  */
-gulp.task('other', function() {
-  var filter = $.filter(function(file) {
-    return file.stat.isFile();
-  });
+gulp.task('other', () => {
+  const filter = $.filter((file) => file.stat.isFile());
 
   return gulp.src([
     // Gather all files...
@@ -21,8 +19,8 @@ gulp.task('other', function() {
     path.join(config.paths.src, '/**/.*'),
     // excluding HTML entry, locales and "excluded" obviously.
     '!' + config.entry.html,
-    path.join('!' + config.paths.app, '/', config.patterns.locales),
-    path.join('!' + config.paths.app, '/', config.patterns.otherExcluded),
+    path.join('!' + config.paths.app, config.patterns.locales),
+    path.join('!' + config.paths.app, config.patterns.otherExcluded),
   ]).
       pipe(filter).
       pipe($.size({title: 'other'})).
