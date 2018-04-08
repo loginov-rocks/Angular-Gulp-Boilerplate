@@ -30,7 +30,9 @@ function buildScripts(src) {
   return gulp.src(src).
       pipe($.eslint()).
       pipe($.eslint.format()).
+      pipe($.sourcemaps.init()).
       pipe($.babel()).
+      pipe($.sourcemaps.write(config.paths.maps)).
       pipe(gulp.dest(config.paths.serve));
 }
 

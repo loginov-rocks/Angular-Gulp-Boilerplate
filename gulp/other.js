@@ -7,7 +7,7 @@ const path = require('path');
 const config = require('./config');
 
 /**
- * Copy constious not handled stuff to distribution dir.
+ * Copy various not handled stuff to distribution dir.
  * @gulptask other
  */
 gulp.task('other', () => {
