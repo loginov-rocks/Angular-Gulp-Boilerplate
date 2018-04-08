@@ -33,7 +33,9 @@ gulp.task('scripts:watch', ['scripts'], function() {
 function buildScripts(src) {
   return gulp.src(src).
       pipe($.eslint()).
-      pipe($.eslint.format());
+      pipe($.eslint.format()).
+      pipe($.babel()).
+      pipe(gulp.dest(config.paths.serve));
 }
 
 /**

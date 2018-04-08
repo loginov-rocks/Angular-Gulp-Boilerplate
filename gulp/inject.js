@@ -15,7 +15,7 @@ var utils = require('./utils');
  */
 gulp.task('inject', ['scripts', 'styles'], function() {
   var injectScripts = gulp.src(
-      path.join(config.paths.app, '/', config.patterns.scripts)
+      path.join(config.paths.serve, '/', config.patterns.scripts)
   ).
       pipe($.angularFilesort()).
       on('error', utils.errorHandler('Angular Filesort'));
