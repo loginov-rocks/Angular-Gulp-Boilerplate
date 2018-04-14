@@ -1,6 +1,7 @@
 'use strict';
 
 const browserSync = require('browser-sync');
+const del = require('del');
 const gulp = require('gulp');
 const $ = require('gulp-load-plugins')();
 const path = require('path');
@@ -13,7 +14,19 @@ const scriptsPath = path.join(config.paths.app, config.patterns.scripts);
  * Build scripts.
  * @gulptask scripts
  */
-gulp.task('scripts', () => buildScripts(scriptsPath));
+gulp.task('scripts', ['scripts:clean'], () => buildScripts(scriptsPath));
+
+/**
+ * Clean temporary scripts.
+ * @gulptask scripts:clean
+ */
+gulp.task('scripts:clean', () => {
+  return del([
+    path.join(config.paths.serve, config.patterns.scripts),
+    // Exclude Angular localization files.
+    path.join('!' + config.paths.serve, config.locales.directory, '*.js'),
+  ]);
+});
 
 /**
  * Build scripts and watch for changes.
