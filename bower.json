@@ -7,18 +7,32 @@
   },
   "keywords": [
     "angular",
+    "angular-locales",
     "angularjs",
+    "autoprefixer",
+    "babel",
     "boilerplate",
+    "bower",
+    "browsersync",
     "concatenation",
+    "es2015",
+    "es6",
+    "eslint",
+    "esnext",
     "gulp",
     "i18n",
     "internationalization",
     "l10n",
+    "lint",
     "localization",
     "minimisation",
+    "sass",
     "seed",
     "skeleton",
-    "uglification"
+    "sourcemaps",
+    "uglification",
+    "ugify",
+    "watch"
   ],
   "authors": [
     "Danila Loginov <danila@loginov.rocks> (https://loginov.rocks)"
