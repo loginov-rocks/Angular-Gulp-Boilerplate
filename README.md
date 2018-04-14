@@ -18,6 +18,7 @@ As a result your entire Angular project will be compiled to five files (`index.h
 ![npm](https://raw.githubusercontent.com/1oginov/Angular-Gulp-Boilerplate/master/misc/npm.png)
 ![Gulp](https://raw.githubusercontent.com/1oginov/Angular-Gulp-Boilerplate/master/misc/gulp.png)
 ![Bower](https://raw.githubusercontent.com/1oginov/Angular-Gulp-Boilerplate/master/misc/bower.png)
+![Babel](https://raw.githubusercontent.com/1oginov/Angular-Gulp-Boilerplate/master/misc/babel.png)
 ![SASS](https://raw.githubusercontent.com/1oginov/Angular-Gulp-Boilerplate/master/misc/sass.png)
 ![ESLint](https://raw.githubusercontent.com/1oginov/Angular-Gulp-Boilerplate/master/misc/eslint.png)
 ![Browsersync](https://raw.githubusercontent.com/1oginov/Angular-Gulp-Boilerplate/master/misc/browsersync.png)

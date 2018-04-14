@@ -1,12 +1,12 @@
 'use strict';
 
-var path = require('path');
+const path = require('path');
 
 /**
  * Configuration.
  * @type {{entry: {Object}, locales: {Object}, patterns: {Object}, paths: {Object}, plugins: {Object}}}
  */
-var config = {
+const config = {
   entry: {},
   locales: {},
   patterns: {},
@@ -34,14 +34,14 @@ config.locales = {
  * @type {{fonts: string, html: string, locales: string, otherExcluded: string, scripts: string, stylesInput: string, stylesOutput: string, stylesWatching: string}}
  */
 config.patterns = {
-  fonts: '**/*.{eot,otf,svg,ttf,woff,woff2}',             // relative to main Bower files
-  html: '**/*.html',                                      // relative to `config.paths.app`
-  locales: '**/' + config.locales.directory + '/*.json',  // relative to `config.paths.app`
-  otherExcluded: '**/*.{css,html,js,scss}',               // relative to `config.paths.app`
-  scripts: '**/*.js',                                     // relative to `config.paths.app`
-  stylesInput: '**/[^_]*.scss',                           // relative to `config.paths.app`
-  stylesOutput: '**/*.css',                               // relative to `config.paths.serve`
-  stylesWatching: '**/*.scss',                            // relative to `config.paths.app`
+  fonts: '**/*.{eot,otf,svg,ttf,woff,woff2}',       // relative to main Bower files
+  html: '**/*.html',                                // relative to `config.paths.app`
+  locales: `**/${config.locales.directory}/*.json`, // relative to `config.paths.app`
+  otherExcluded: '**/*.{css,html,js,scss}',         // relative to `config.paths.app`
+  scripts: '**/*.js',                               // relative to `config.paths.app`
+  stylesInput: '**/[^_]*.scss',                     // relative to `config.paths.app`
+  stylesOutput: '**/*.css',                         // relative to `config.paths.serve`
+  stylesWatching: '**/*.scss',                      // relative to `config.paths.app`
 };
 
 /**
