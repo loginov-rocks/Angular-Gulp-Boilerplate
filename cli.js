@@ -2,20 +2,20 @@
 /* eslint-env node */
 'use strict';
 
-var gitClone = require('git-clone');
+const gitClone = require('git-clone');
 
-var packageJson = require('./package.json');
+const packageJson = require('./package.json');
 
-var repository = packageJson.repository.url;
+let repository = packageJson.repository.url;
 repository = repository.substring(repository.indexOf('https://'));
 
-var tag = 'v' + packageJson.version;
+const tag = 'v' + packageJson.version;
 
-var destination = process.argv[2] || './';
+const destination = process.argv[2] || './';
 
-process.stdout.write('Cloning Git repository from ' + repository + ' to "' +
-    destination + '" using ' + tag + '...');
+process.stdout.write(
+    `Cloning Git repository from ${repository} to ${destination} using ${tag}...`);
 
-gitClone(repository, destination, {checkout: tag}, function() {
+gitClone(repository, destination, {checkout: tag}, () => {
   process.stdout.write(' done!\n');
 });
