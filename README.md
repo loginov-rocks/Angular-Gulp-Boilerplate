@@ -10,22 +10,22 @@ templates, scripts, styles and translations concatenation, uglification and mini
 As a result your entire Angular project will be compiled to five files (`index.html`, `app.js` and `vendor.js`,
 `app.css` and `vendor.css`), translations files and source maps if needed.
 
-![Teaser](https://raw.githubusercontent.com/1oginov/Angular-Gulp-Boilerplate/master/misc/teaser.png)
+![Teaser](https://raw.githubusercontent.com/1oginov/Angular-Gulp-Boilerplate/master/github/teaser.png)
 
 ## What you will get?
 
-![Angular](https://raw.githubusercontent.com/1oginov/Angular-Gulp-Boilerplate/master/misc/angular.png)
-![npm](https://raw.githubusercontent.com/1oginov/Angular-Gulp-Boilerplate/master/misc/npm.png)
-![Gulp](https://raw.githubusercontent.com/1oginov/Angular-Gulp-Boilerplate/master/misc/gulp.png)
-![Bower](https://raw.githubusercontent.com/1oginov/Angular-Gulp-Boilerplate/master/misc/bower.png)
-![Babel](https://raw.githubusercontent.com/1oginov/Angular-Gulp-Boilerplate/master/misc/babel.png)
-![SASS](https://raw.githubusercontent.com/1oginov/Angular-Gulp-Boilerplate/master/misc/sass.png)
-![ESLint](https://raw.githubusercontent.com/1oginov/Angular-Gulp-Boilerplate/master/misc/eslint.png)
-![Browsersync](https://raw.githubusercontent.com/1oginov/Angular-Gulp-Boilerplate/master/misc/browsersync.png)
-![Normalize](https://raw.githubusercontent.com/1oginov/Angular-Gulp-Boilerplate/master/misc/normalize.png)
-![Autoprefixer](https://raw.githubusercontent.com/1oginov/Angular-Gulp-Boilerplate/master/misc/autoprefixer.png)
-![UI-Router](https://raw.githubusercontent.com/1oginov/Angular-Gulp-Boilerplate/master/misc/ui-router.png)
-![angular-translate](https://raw.githubusercontent.com/1oginov/Angular-Gulp-Boilerplate/master/misc/angular-translate.png)
+![Angular](https://raw.githubusercontent.com/1oginov/Angular-Gulp-Boilerplate/master/github/angular.png)
+![npm](https://raw.githubusercontent.com/1oginov/Angular-Gulp-Boilerplate/master/github/npm.png)
+![Gulp](https://raw.githubusercontent.com/1oginov/Angular-Gulp-Boilerplate/master/github/gulp.png)
+![Bower](https://raw.githubusercontent.com/1oginov/Angular-Gulp-Boilerplate/master/github/bower.png)
+![Babel](https://raw.githubusercontent.com/1oginov/Angular-Gulp-Boilerplate/master/github/babel.png)
+![SASS](https://raw.githubusercontent.com/1oginov/Angular-Gulp-Boilerplate/master/github/sass.png)
+![ESLint](https://raw.githubusercontent.com/1oginov/Angular-Gulp-Boilerplate/master/github/eslint.png)
+![Browsersync](https://raw.githubusercontent.com/1oginov/Angular-Gulp-Boilerplate/master/github/browsersync.png)
+![Normalize](https://raw.githubusercontent.com/1oginov/Angular-Gulp-Boilerplate/master/github/normalize.png)
+![Autoprefixer](https://raw.githubusercontent.com/1oginov/Angular-Gulp-Boilerplate/master/github/autoprefixer.png)
+![UI-Router](https://raw.githubusercontent.com/1oginov/Angular-Gulp-Boilerplate/master/github/ui-router.png)
+![angular-translate](https://raw.githubusercontent.com/1oginov/Angular-Gulp-Boilerplate/master/github/angular-translate.png)
 
 **Angular 1.6** with **UI-Router** and **angular-translate**, automated services injecting by **ng-annotate**, gathering
 HTML templates into **$templateCache** and making **source maps** for debug.
