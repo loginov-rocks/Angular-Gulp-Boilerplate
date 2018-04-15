@@ -1,28 +1,26 @@
 'use strict';
 
-var browserSync = require('browser-sync');
-var gulp = require('gulp');
-var $ = require('gulp-load-plugins')();
-var path = require('path');
+const browserSync = require('browser-sync');
+const gulp = require('gulp');
+const $ = require('gulp-load-plugins')();
+const path = require('path');
 
-var config = require('./config');
-var utils = require('./utils');
+const config = require('./config');
+const utils = require('./utils');
 
-var localesPath = path.join(config.paths.app, '/', config.patterns.locales);
+const localesPath = path.join(config.paths.app, config.patterns.locales);
 
 /**
  * Build locales.
  * @gulptask locales
  */
-gulp.task('locales', ['locales-angular'], function() {
-  return buildAppLocales();
-});
+gulp.task('locales', ['locales-angular'], () => buildAppLocales());
 
 /**
  * Build locales to distribution dir.
  * @gulptask locales:dist
  */
-gulp.task('locales:dist', ['locales-angular:dist'], function() {
+gulp.task('locales:dist', ['locales-angular:dist'], () => {
   return buildAppLocales(true).
       pipe($.size({title: 'locales'}));
 });
@@ -31,30 +29,27 @@ gulp.task('locales:dist', ['locales-angular:dist'], function() {
  * Build locales and watch for changes.
  * @gulptask locales:watch
  */
-gulp.task('locales:watch', ['locales'], function() {
+gulp.task('locales:watch', ['locales'], () => {
   return gulp.watch(
       localesPath,
-      function() {
+      () => {
         buildAppLocales().
             pipe($.debug({title: 'locales modified:'})).
             pipe(browserSync.stream());
-      }
-  );
+      });
 });
 
 /**
  * Build Angular locales only.
  * @gulptask locales-angular
  */
-gulp.task('locales-angular', function() {
-  return buildAngularLocales();
-});
+gulp.task('locales-angular', () => buildAngularLocales());
 
 /**
  * Build Angular locales only to distribution dir.
  * @gulptask locales-angular:dist
  */
-gulp.task('locales-angular:dist', function() {
+gulp.task('locales-angular:dist', () => {
   return buildAngularLocales(true).
       pipe($.size({title: 'locales-angular'}));
 });
@@ -67,7 +62,7 @@ gulp.task('locales-angular:dist', function() {
 function buildAppLocales(isDist) {
   isDist = isDist || false;
 
-  var dest = getDestLocalesDir(isDist);
+  const dest = getDestLocalesDir(isDist);
 
   return gulp.src(localesPath).
       pipe($.localesBundler({omit: config.locales.directory})).
@@ -89,7 +84,7 @@ function buildAngularLocales(isDist) {
   }
 
   // Build file pattern for Angular localization files used.
-  var filePattern = 'angular-locale_';
+  let filePattern = 'angular-locale_';
   if (config.locales.angular.used.length === 1) {
     filePattern += config.locales.angular.used[0];
   }
@@ -98,8 +93,8 @@ function buildAngularLocales(isDist) {
   }
   filePattern += '.js';
 
-  var src = path.join(config.locales.angular.directory, '/', filePattern);
-  var dest = getDestLocalesDir(isDist);
+  const src = path.join(config.locales.angular.directory, filePattern);
+  const dest = getDestLocalesDir(isDist);
 
   return gulp.src(src).
       pipe($.uglify(config.plugins.uglifyAngularLocales)).
@@ -115,9 +110,7 @@ function buildAngularLocales(isDist) {
 function getDestLocalesDir(isDist) {
   isDist = isDist || false;
 
-  if (isDist) {
-    return path.join(config.paths.dist, '/', config.locales.directory);
-  }
-
-  return path.join(config.paths.serve, '/', config.locales.directory);
+  return path.join(
+      (isDist ? config.paths.dist : config.paths.serve),
+      config.locales.directory);
 }

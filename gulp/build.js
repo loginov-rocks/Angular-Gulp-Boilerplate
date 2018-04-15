@@ -1,11 +1,11 @@
 'use strict';
 
-var gulp = require('gulp');
-var $ = require('gulp-load-plugins')();
-var path = require('path');
+const gulp = require('gulp');
+const $ = require('gulp-load-plugins')();
+const path = require('path');
 
-var config = require('./config');
-var utils = require('./utils');
+const config = require('./config');
+const utils = require('./utils');
 
 /**
  * Build production version ready to deploy.
@@ -17,24 +17,23 @@ gulp.task('build', ['build-app', 'fonts', 'locales:dist', 'other']);
  * Build production version of app only, without assets.
  * @gulptask build-app
  */
-gulp.task('build-app', ['inject', 'partials'], function() {
-  var injectPartials = gulp.src(
-      path.join(config.paths.partials, '/', config.paths.angularTemplatecache),
-      {read: false}
-  );
+gulp.task('build-app', ['inject', 'partials'], () => {
+  const injectPartials = gulp.src(
+      path.join(config.paths.partials, config.paths.angularTemplatecache),
+      {read: false});
 
-  var injectOptions = {
+  const injectOptions = {
     addRootSlash: false,
     ignorePath: config.paths.partials,
     starttag: '<!-- inject:partials -->',
   };
 
-  var filterOptions = {dot: true, restore: true};
+  const filterOptions = {dot: true, restore: true};
 
-  var excludeSourceMapsFilter = $.filter(['**', '!**/*.map'], filterOptions);
-  var htmlFilter = $.filter(config.patterns.html, filterOptions);
-  var scriptsFilter = $.filter(config.patterns.scripts, filterOptions);
-  var stylesFilter = $.filter(config.patterns.stylesOutput, filterOptions);
+  const excludeSourceMapsFilter = $.filter(['**', '!**/*.map'], filterOptions);
+  const htmlFilter = $.filter(config.patterns.html, filterOptions);
+  const scriptsFilter = $.filter(config.patterns.scripts, filterOptions);
+  const stylesFilter = $.filter(config.patterns.stylesOutput, filterOptions);
 
   return gulp.src(path.join(config.paths.serve, '/*.html')).
       // Inject partials within `<!-- inject:partials -->` comments in HTML

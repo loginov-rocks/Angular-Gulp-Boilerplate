@@ -1,44 +1,39 @@
 'use strict';
 
-var browserSync = require('browser-sync');
-var gulp = require('gulp');
-var $ = require('gulp-load-plugins')();
-var path = require('path');
-var wiredep = require('wiredep').stream;
+const browserSync = require('browser-sync');
+const gulp = require('gulp');
+const $ = require('gulp-load-plugins')();
+const path = require('path');
+const wiredep = require('wiredep').stream;
 
-var config = require('./config');
-var utils = require('./utils');
+const config = require('./config');
+const utils = require('./utils');
 
 /**
  * Build styles.
  * @gulptask styles
  */
-gulp.task('styles', function() {
-  return buildStyles();
-});
+gulp.task('styles', () => buildStyles());
 
 /**
  * Build styles and watch for changes.
  * @gulptask styles:watch
  */
-gulp.task('styles:watch', ['styles'], function() {
-  return watch();
-});
+gulp.task('styles:watch', ['styles'], () => watch());
 
 /**
  * Inject input SCSS styles into entry and build output CSS styles.
  * @return {*}
  */
 function buildStyles() {
-  var injectStyles = gulp.src(
+  const injectStyles = gulp.src(
       [
-        path.join(config.paths.app, '/', config.patterns.stylesInput),
+        path.join(config.paths.app, config.patterns.stylesInput),
         '!' + config.entry.styles,
       ],
-      {read: false}
-  );
+      {read: false});
 
-  var injectOptions = {
+  const injectOptions = {
     addRootSlash: false,
     endtag: '// endinject',
     starttag: '// inject',
@@ -64,8 +59,8 @@ function watch(notOnlyChangedCallback) {
   notOnlyChangedCallback = notOnlyChangedCallback || null;
 
   return gulp.watch(
-      path.join(config.paths.app, '/', config.patterns.stylesWatching),
-      function(event) {
+      path.join(config.paths.app, config.patterns.stylesWatching),
+      (event) => {
         if (event.type !== 'changed') {
           notOnlyChangedCallback();
           return;
@@ -76,8 +71,9 @@ function watch(notOnlyChangedCallback) {
             // Push only output CSS styles to the BrowserSync stream to prevent
             // full reloading.
             pipe(browserSync.stream({match: config.patterns.stylesOutput}));
-      }
-  );
+      });
 }
 
-exports.watch = watch;
+module.exports = {
+  watch,
+};

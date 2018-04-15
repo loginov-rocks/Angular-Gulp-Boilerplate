@@ -1,9 +1,12 @@
 language: node_js
 node_js:
   - "node"
+before_install:
+  - npm install -g bower greenkeeper-lockfile@1 gulp-cli
 before_script:
-  - npm install -g gulp-cli
-  - npm install -g bower
+  - greenkeeper-lockfile-update
   - bower install
 script:
   - gulp default
+after_script:
+  - greenkeeper-lockfile-upload
