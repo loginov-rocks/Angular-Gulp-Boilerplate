@@ -1,11 +1,14 @@
 {
   "name": "angular-gulp-boilerplate",
   "version": "1.0.0",
-  "description": "Clean but full featured AngularJS boilerplate using Gulp workflow and best practicies",
+  "description": "Clean but full featured AngularJS boilerplate using Gulp workflow and best practices",
   "bin": "./cli.js",
   "scripts": {
+    "build": "gulp default",
     "docs:gulp": "gulpdoc ./gulp/*.js",
     "lint": "eslint ./cli.js ./gulpfile.js ./gulp/ ./src/ ./test/",
+    "start": "gulp serve",
+    "start:dist": "gulp serve:dist",
     "update:bower": "ncu -a -m bower --packageFile bower.json",
     "update:dev": "ncu -a --packageFile package.json"
   },

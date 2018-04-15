@@ -1,6 +1,6 @@
 {
   "name": "angular-gulp-boilerplate",
-  "description": "Clean but full featured AngularJS boilerplate using Gulp workflow and best practicies",
+  "description": "Clean but full featured AngularJS boilerplate using Gulp workflow and best practices",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/1oginov/Angular-Gulp-Boilerplate.git"
