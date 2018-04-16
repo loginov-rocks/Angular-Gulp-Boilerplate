@@ -1,6 +1,6 @@
 {
   "name": "angular-gulp-boilerplate",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Clean but full featured AngularJS boilerplate using Gulp workflow and best practices",
   "bin": "./cli.js",
   "scripts": {
