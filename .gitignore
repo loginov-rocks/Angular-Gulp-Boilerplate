@@ -58,9 +58,11 @@ typings/
 .env
 
 # IntelliJ IDEA
-.idea/dictionaries/
+.idea/**/dictionaries/
 .idea/**/tasks.xml
 .idea/**/workspace.xml
+
+.DS_Store
 
 # Generatable
 .tmp/
