@@ -47,6 +47,7 @@ function initBrowsersync(baseDir) {
       baseDir: baseDir,
       routes: routes,
     },
+    single: true,
     startPath: '/',
   });
 }
