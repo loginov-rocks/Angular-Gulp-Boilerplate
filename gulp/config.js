@@ -129,6 +129,11 @@ config.plugins.uglifyAngularLocales = {
  */
 config.plugins.wiredep = {
   directory: 'bower_components',
+  overrides:{
+    "normalize-css":{
+      "main":["normalize.css"]
+    }
+  }
 };
 
 /**
