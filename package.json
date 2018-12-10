@@ -64,7 +64,7 @@
     "eslint": "^5.6.1",
     "eslint-config-angular": "^0.5.0",
     "eslint-plugin-angular": "^3.3.0",
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.0",
     "gulp-angular-filesort": "^1.2.1",
     "gulp-angular-templatecache": "^2.2.1",
     "gulp-autoprefixer": "^6.0.0",
