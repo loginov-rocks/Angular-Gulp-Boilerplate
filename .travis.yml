@@ -1,9 +1,11 @@
 language: node_js
 node_js:
-- "node"
+  - "8"
+  - "10"
+  - "node"
 before_install:
-- npm install -g bower gulp-cli
+  - npm install -g bower gulp-cli
 before_script:
-- bower install
+  - bower install
 script:
-- gulp default
+  - gulp default
