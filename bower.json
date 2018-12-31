@@ -3,7 +3,7 @@
   "description": "Clean but full featured AngularJS boilerplate using Gulp workflow and best practices",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/1oginov/Angular-Gulp-Boilerplate.git"
+    "url": "git+https://github.com/loginov-rocks/Angular-Gulp-Boilerplate.git"
   },
   "keywords": [
     "angular",
@@ -38,15 +38,15 @@
     "Danila Loginov <danila@loginov.rocks> (https://loginov.rocks)"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/1oginov/Angular-Gulp-Boilerplate",
+  "homepage": "https://github.com/loginov-rocks/Angular-Gulp-Boilerplate",
   "dependencies": {
-    "angular": "^1.7.4",
+    "angular": "^1.7.5",
     "angular-dynamic-locale": "^0.1.37",
-    "angular-i18n": "^1.7.4",
+    "angular-i18n": "^1.7.5",
     "angular-translate": "^2.18.1",
     "angular-translate-handler-log": "^2.18.1",
     "angular-translate-loader-static-files": "^2.18.1",
     "angular-ui-router": "^1.0.20",
-    "normalize-css": "^8.0.0"
+    "normalize-css": "^8.0.1"
   }
 }

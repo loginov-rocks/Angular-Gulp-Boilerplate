@@ -1,6 +1,6 @@
 {
   "name": "angular-gulp-boilerplate",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Clean but full featured AngularJS boilerplate using Gulp workflow and best practices",
   "bin": "./cli.js",
   "scripts": {
@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/1oginov/Angular-Gulp-Boilerplate.git"
+    "url": "git+https://github.com/loginov-rocks/Angular-Gulp-Boilerplate.git"
   },
   "keywords": [
     "angular",
@@ -48,25 +48,23 @@
   "author": "Danila Loginov <danila@loginov.rocks> (https://loginov.rocks)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/1oginov/Angular-Gulp-Boilerplate/issues"
+    "url": "https://github.com/loginov-rocks/Angular-Gulp-Boilerplate/issues"
   },
-  "homepage": "https://github.com/1oginov/Angular-Gulp-Boilerplate",
+  "homepage": "https://github.com/loginov-rocks/Angular-Gulp-Boilerplate",
   "dependencies": {
     "git-clone": "^0.1.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.1.2",
-    "@babel/preset-env": "^7.1.0",
-    "babel-core": "^6.26.3",
-    "babel-preset-env": "^1.7.0",
-    "browser-sync": "^2.24.7",
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
+    "browser-sync": "^2.26.3",
     "del": "^3.0.0",
-    "eslint": "^5.6.1",
+    "eslint": "^5.11.1",
     "eslint-config-angular": "^0.5.0",
-    "eslint-plugin-angular": "^3.3.0",
+    "eslint-plugin-angular": "^4.0.0",
     "gulp": "^3.9.1",
     "gulp-angular-filesort": "^1.2.1",
-    "gulp-angular-templatecache": "^2.2.1",
+    "gulp-angular-templatecache": "^2.2.6",
     "gulp-autoprefixer": "^6.0.0",
     "gulp-babel": "^8.0.0",
     "gulp-cssnano": "^2.1.3",
@@ -75,21 +73,26 @@
     "gulp-filter": "^5.1.0",
     "gulp-flatten": "^0.4.0",
     "gulp-htmlmin": "^5.0.1",
-    "gulp-inject": "^4.3.2",
+    "gulp-inject": "^5.0.2",
     "gulp-load-plugins": "^1.5.0",
-    "gulp-locales-bundler": "^1.0.2",
+    "gulp-locales-bundler": "^1.0.3",
     "gulp-ng-annotate": "^2.1.0",
-    "gulp-rev": "^8.1.1",
+    "gulp-rev": "^9.0.0",
     "gulp-rev-replace": "^0.4.4",
-    "gulp-sass": "^4.0.1",
+    "gulp-sass": "^4.0.2",
     "gulp-size": "^3.0.0",
     "gulp-sourcemaps": "^2.6.4",
     "gulp-uglify": "^3.0.1",
-    "gulp-useref": "^3.1.5",
+    "gulp-useref": "^3.1.6",
     "gulp-util": "^3.0.8",
-    "gulpdoc": "^1.1.3",
+    "gulpdoc": "^1.1.4",
     "main-bower-files": "^2.13.1",
-    "npm-check-updates": "^2.14.2",
+    "npm-check-updates": "^2.15.0",
     "wiredep": "^4.0.0"
+  },
+  "greenkeeper": {
+    "ignore": [
+      "gulp"
+    ]
   }
 }
