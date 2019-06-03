@@ -56,6 +56,9 @@ Boilerplate exists in **Node.js** environment, so you need to install Node.js fr
 [official website](https://nodejs.org) or use [NVM](https://github.com/creationix/nvm)
 ([NVM for Windows](https://github.com/coreybutler/nvm-windows)) first.   
 
+**Attention! This project still uses Gulp 3 which is [not supported](https://github.com/gulpjs/gulp/issues/2324) by Node
+12.**
+
 After setting up Node.js you can use **npm** ([Yarn](https://yarnpkg.com) is an alternative) to install
 [Bower](https://bower.io) and [Gulp](https://gulpjs.com) globally:
 
