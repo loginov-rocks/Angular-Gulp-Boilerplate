@@ -1,7 +1,7 @@
 # Angular Gulp Boilerplate
 
 [![NpmVersion](https://img.shields.io/npm/v/angular-gulp-boilerplate.svg)](https://www.npmjs.com/package/angular-gulp-boilerplate)
-[![Build Status](https://travis-ci.org/loginov-rocks/Angular-Gulp-Boilerplate.svg?branch=master)](https://travis-ci.org/loginov-rocks/Angular-Gulp-Boilerplate)
+[![Build Status](https://travis-ci.com/loginov-rocks/Angular-Gulp-Boilerplate.svg?branch=master)](https://travis-ci.com/loginov-rocks/Angular-Gulp-Boilerplate)
 [![devDependencies Status](https://david-dm.org/loginov-rocks/Angular-Gulp-Boilerplate/dev-status.svg)](https://david-dm.org/loginov-rocks/Angular-Gulp-Boilerplate?type=dev)
 [![Greenkeeper badge](https://badges.greenkeeper.io/loginov-rocks/Angular-Gulp-Boilerplate.svg)](https://greenkeeper.io/)
 
