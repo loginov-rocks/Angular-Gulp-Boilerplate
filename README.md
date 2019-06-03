@@ -1,7 +1,7 @@
 # Angular Gulp Boilerplate
 
 [![NpmVersion](https://img.shields.io/npm/v/angular-gulp-boilerplate.svg)](https://www.npmjs.com/package/angular-gulp-boilerplate)
-[![Build Status](https://travis-ci.org/loginov-rocks/Angular-Gulp-Boilerplate.svg?branch=master)](https://travis-ci.org/loginov-rocks/Angular-Gulp-Boilerplate)
+[![Build Status](https://travis-ci.com/loginov-rocks/Angular-Gulp-Boilerplate.svg?branch=master)](https://travis-ci.com/loginov-rocks/Angular-Gulp-Boilerplate)
 [![devDependencies Status](https://david-dm.org/loginov-rocks/Angular-Gulp-Boilerplate/dev-status.svg)](https://david-dm.org/loginov-rocks/Angular-Gulp-Boilerplate?type=dev)
 [![Greenkeeper badge](https://badges.greenkeeper.io/loginov-rocks/Angular-Gulp-Boilerplate.svg)](https://greenkeeper.io/)
 
@@ -55,6 +55,9 @@ code online and keep it clean.
 Boilerplate exists in **Node.js** environment, so you need to install Node.js from
 [official website](https://nodejs.org) or use [NVM](https://github.com/creationix/nvm)
 ([NVM for Windows](https://github.com/coreybutler/nvm-windows)) first.   
+
+**Attention! This project still uses Gulp 3 which is [not supported](https://github.com/gulpjs/gulp/issues/2324) by Node
+12.**
 
 After setting up Node.js you can use **npm** ([Yarn](https://yarnpkg.com) is an alternative) to install
 [Bower](https://bower.io) and [Gulp](https://gulpjs.com) globally:
