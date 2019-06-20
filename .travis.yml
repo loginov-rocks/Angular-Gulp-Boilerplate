@@ -6,5 +6,4 @@ before_install:
   - npm install -g bower gulp-cli
 before_script:
   - bower install
-script:
-  - gulp default
+script: npm run ci
