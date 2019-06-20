@@ -5,6 +5,7 @@
   "bin": "cli.js",
   "scripts": {
     "build": "gulp default",
+    "ci": "npm run lint && npm run build",
     "docs:gulp": "gulpdoc ./gulp/*.js",
     "lint": "eslint cli.js gulpfile.js gulp src",
     "start": "gulp serve",
