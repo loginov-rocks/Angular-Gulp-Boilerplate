@@ -176,10 +176,6 @@ bower install
 npm install
 ```
 
-## Contribution
-
-Please use the [dev](https://github.com/loginov-rocks/Angular-Gulp-Boilerplate/tree/dev) branch and feel free to contribute!
-
 ## Credits
 
 Awesome [generator-gulp-angular](https://github.com/Swiip/generator-gulp-angular) was used as a basis for this project,
