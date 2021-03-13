@@ -16,8 +16,7 @@ jobs:
     strategy:
       matrix:
         node-version:
-          # last 2 supported versions
-          - 8
+          # last supported version
           - 10
 
     steps:
