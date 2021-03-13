@@ -87,8 +87,7 @@ function buildAngularLocales(isDist) {
   let filePattern = 'angular-locale_';
   if (config.locales.angular.used.length === 1) {
     filePattern += config.locales.angular.used[0];
-  }
-  else {
+  } else {
     filePattern += '{' + config.locales.angular.used.join() + '}';
   }
   filePattern += '.js';

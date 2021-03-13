@@ -1,7 +1,7 @@
 {
   "name": "angular-gulp-boilerplate",
   "version": "1.0.10",
-  "description": "Clean but full featured AngularJS boilerplate using Gulp workflow and best practices",
+  "description": "Clean but full-featured AngularJS boilerplate using Gulp workflow and best practices",
   "bin": "cli.js",
   "scripts": {
     "build": "gulp default",
@@ -90,10 +90,5 @@
     "main-bower-files": "^2.13.3",
     "npm-check-updates": "^4.0.0",
     "wiredep": "^4.0.0"
-  },
-  "greenkeeper": {
-    "ignore": [
-      "gulp"
-    ]
   }
 }
