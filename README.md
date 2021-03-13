@@ -2,6 +2,7 @@
 
 [![NpmVersion](https://img.shields.io/npm/v/angular-gulp-boilerplate.svg)](https://www.npmjs.com/package/angular-gulp-boilerplate)
 [![CI](https://github.com/loginov-rocks/Angular-Gulp-Boilerplate/actions/workflows/ci.yml/badge.svg)](https://github.com/loginov-rocks/Angular-Gulp-Boilerplate/actions/workflows/ci.yml)
+[![CD](https://github.com/loginov-rocks/Angular-Gulp-Boilerplate/actions/workflows/cd.yml/badge.svg)](https://github.com/loginov-rocks/Angular-Gulp-Boilerplate/actions/workflows/cd.yml)
 
 Clean AngularJS boilerplate powered by Gulp tasks and designed to automate your daily development routine such as
 concatenation, obfuscation, minimisation and injection of templates, scripts, styles, translations and more.
